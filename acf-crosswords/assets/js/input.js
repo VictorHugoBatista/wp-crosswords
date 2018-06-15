@@ -48,12 +48,17 @@
 		},
 		initializeEvents: function() {
 			var self = this;
-			this.elements.$crossword_editor.on('keyup', '.crossword-editor-cell', function(event){
+			this.elements.$crossword_editor.on('keyup', '.crossword-editor-cell', function(event) {
 				var $this = $(event.currentTarget),
 					pos_x = $this.data('x'),
 					pos_y = $this.data('y'),
 					letter = $this.val();
 				self.updateLetters(letter, pos_x, pos_y);
+				if ('' !== letter) {
+					$this.addClass('filled');
+				} else {
+					$this.removeClass('filled');
+				}
 			});
 			this.elements.$crossword_editor_button.on('click', function(event) {
 				event.preventDefault();

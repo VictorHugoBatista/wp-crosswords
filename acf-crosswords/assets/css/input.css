@@ -54,6 +54,7 @@
 	will-change: background-color;
 }
 
-.crossword-editor .crossword-editor-cell.filled {
+.crossword-editor .crossword-editor-cell.filled,
+.crossword-editor .crossword-editor-cell:focus {
 	background-color: transparent;
 }
