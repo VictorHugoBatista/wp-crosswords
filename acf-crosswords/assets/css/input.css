@@ -35,3 +35,12 @@
 .crossword-editor-button {
 	margin: 3px 0 !important;
 }
+
+.crossword-editor {
+	border-collapse: collapse;
+	margin: 2.5px 7.5px;
+}
+
+.crossword-editor td {
+	padding: 0;
+}
