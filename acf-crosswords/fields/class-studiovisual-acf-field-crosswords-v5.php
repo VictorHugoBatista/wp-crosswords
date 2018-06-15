@@ -137,8 +137,24 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		*/
 		
 		?>
+		<div>
+			<button class="crossword-editor-add-row button button-primary" data-pos="up">
+				Adicionar linha
+			</button>
+			<button class="crossword-editor-rem-row button button-primary" data-pos="up">
+				Remover linha
+			</button>
+		</div>
 		<table class="crossword-editor">
 		</table>
+		<div>
+			<button class="crossword-editor-add-row button button-primary" data-pos="bottom">
+				Adicionar linha
+			</button>
+			<button class="crossword-editor-rem-row button button-primary" data-pos="bottom">
+				Remover linha
+			</button>
+		</div>
 		<?php
 	}
 	
