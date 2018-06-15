@@ -1,14 +1,14 @@
 .crossword-editor-wrapper {
-	overflow: auto;
+	overflow: hidden;
 	zoom: 1;
 }
 
 .crossword-editor-layout-row {
-	width: 15%;
+	width: 30px;
 }
 
 .crossword-editor-layout-row-center {
-	width: 70%;
+	width: calc(100% - 60px);
 }
 
 .crossword-editor-layout-row,
