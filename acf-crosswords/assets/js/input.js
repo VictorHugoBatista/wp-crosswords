@@ -77,8 +77,10 @@
 			for (tr_index = 0; tr_index < size.y; tr_index++) {
 				table_html += '<tr>';
 				for (td_index = 0; td_index < size.x; td_index++) {
+					var value = letters[tr_index][td_index],
+						filled_class = '' !== value ? 'filled' : '';
 					table_html += '<td>';
-					table_html += '    <input type="text" class="crossword-editor-cell" data-x="' + td_index + '" data-y="' + tr_index + '" value="' + letters[tr_index][td_index] + '" maxlength="1">';
+					table_html += '    <input type="text" class="crossword-editor-cell ' + filled_class + '" data-x="' + td_index + '" data-y="' + tr_index + '" value="' + value + '" maxlength="1">';
 					table_html += '</td>';
 				}
 				table_html += '</tr>';
