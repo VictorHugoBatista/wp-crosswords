@@ -137,11 +137,11 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		*/
 		
 		?>
-		<table>
+		<table class="crossword-editor">
 			<?php for ($tr_index = 0; $tr_index < 10; $tr_index++) : ?>
 			<tr>
 				<?php for ($td_index = 0; $td_index < 10; $td_index++) : ?>
-				<td><input type="text" /></td>
+				<td><input type="text" class="crossword-editor-cell" maxlength="1" /></td>
 				<?php endfor ?>
 			</tr>
 			<?php endfor ?>
@@ -164,8 +164,6 @@ class studiovisual_acf_field_crosswords extends acf_field {
 	*  @param	n/a
 	*  @return	n/a
 	*/
-
-	/*
 	
 	function input_admin_enqueue_scripts() {
 		
@@ -184,8 +182,6 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		wp_enqueue_style('TEXTDOMAIN');
 		
 	}
-	
-	*/
 	
 	
 	/*
