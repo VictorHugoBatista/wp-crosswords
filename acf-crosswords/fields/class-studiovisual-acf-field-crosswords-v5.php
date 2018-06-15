@@ -137,6 +137,7 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		*/
 		
 		?>
+		<input type="hidden" class="crossword-editor-hidden" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" />
 		<div class="crossword-editor-layout-line-control">
 			<button class="crossword-editor-button button button-primary" data-operator="add" data-type="row" data-pos="up">
 				Adicionar linha

@@ -16,6 +16,7 @@
 			this.elements = {
 				$crossword_editor: $crossword_editor,
 				$crossword_editor_button: $('.crossword-editor-button'),
+				$crossword_editor_hidden: $('.crossword-editor-hidden'),
 			};
 			return true;
 		},
@@ -56,6 +57,8 @@
 		},
 		updateLetters: function(letter, pos_x, pos_y) {
 			this.data.crosword_letters[pos_y][pos_x] = letter;
+			this.elements.$crossword_editor_hidden
+				.val(JSON.stringify(this.data.crosword_letters));
 		},
 	};
 
