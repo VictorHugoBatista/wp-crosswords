@@ -27,7 +27,21 @@
 				Array(this.data.crossword_size.y).fill().map(function(){
 					return Array(self.data.crossword_size.x).fill()
 				});
-		}, 
+			this.initializeFields();
+		},
+		initializeFields: function() {
+			var table_html = '';
+			for (tr_index = 0; tr_index < this.data.crossword_size.y; tr_index++) {
+				table_html += '<tr>';
+				for (td_index = 0; td_index < this.data.crossword_size.x; td_index++) {
+					table_html += '<td>';
+					table_html += '    <input type="text" class="crossword-editor-cell" maxlength="1">';
+					table_html += '</td>';
+				}
+				table_html += '</tr>';
+			}
+			this.elements.$crossword_editor.html(table_html);
+		},
 	};
 	
 	/**
