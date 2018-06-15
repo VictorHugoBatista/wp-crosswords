@@ -5,6 +5,7 @@
 		initialize: function() {
 			if (this.initializeElements()) {
 				this.setupEditor();
+				this.initializeEvents();
 			}
 		},
 		initializeElements: function() {			
@@ -14,10 +15,7 @@
 			}
 			this.elements = {
 				$crossword_editor: $crossword_editor,
-				$crossword_editor_add_col: $('.crossword-editor-add-col'),
-				$crossword_editor_rem_col: $('.crossword-editor-rem-col'),
-				$crossword_editor_add_row: $('.crossword-editor-add-row'),
-				$crossword_editor_rem_row: $('.crossword-editor-rem-row'),
+				$crossword_editor_button: $('.crossword-editor-button'),
 			};
 			return true;
 		},
@@ -37,6 +35,16 @@
 			var table_html = '';
 			this.elements.$crossword_editor
 				.html(crossword_table.initializeTableEmpty(this.data.crossword_size));
+		},
+		initializeEvents: function() {
+			this.elements.$crossword_editor_button.on('click', function(event) {
+				event.preventDefault();
+				var $this = $(event.currentTarget),
+					operator = $this.data('operator'),
+					type = $this.data('type'),
+					pos = $this.data('pos');
+				console.log(operator, type, pos);
+			})
 		},
 	};
 

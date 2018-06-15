@@ -138,19 +138,19 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		
 		?>
 		<div class="crossword-editor-layout-line-control">
-			<button class="crossword-editor-button crossword-editor-add-row button button-primary" data-pos="up">
+			<button class="crossword-editor-button button button-primary" data-operator="add" data-type="row" data-pos="up">
 				Adicionar linha
 			</button>
-			<button class="crossword-editor-button crossword-editor-rem-row button button-primary" data-pos="up">
+			<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="row" data-pos="up">
 				Remover linha
 			</button>
 		</div>
 		<div class="crossword-editor-wrapper">
 			<div class="crossword-editor-layout-row row-left crossword-editor-layout-row-control">
-				<button class="crossword-editor-button crossword-editor-add-col button button-primary" data-pos="left">
+				<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="left">
 					Adicionar coluna
 				</button>
-				<button class="crossword-editor-button crossword-editor-rem-col button button-primary" data-pos="left">
+				<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="left">
 					Remover coluna
 				</button>
 			</div>
@@ -159,19 +159,19 @@ class studiovisual_acf_field_crosswords extends acf_field {
 				</table>
 			</div>
 			<div class="crossword-editor-layout-row row-right crossword-editor-layout-row-control">
-				<button class="crossword-editor-button crossword-editor-add-col button button-primary" data-pos="right">
+				<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="right">
 					Adicionar coluna
 				</button>
-				<button class="crossword-editor-button crossword-editor-rem-col button button-primary" data-pos="right">
+				<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="right">
 					Remover coluna
 				</button>
 			</div>
 		</div>
 		<div class="crossword-editor-layout-line-control">
-			<button class="crossword-editor-button crossword-editor-add-row button button-primary" data-pos="bottom">
+			<button class="crossword-editor-button button button-primary" data-operator="add" data-type="row" data-pos="bottom">
 				Adicionar linha
 			</button>
-			<button class="crossword-editor-button crossword-editor-rem-row button button-primary" data-pos="bottom">
+			<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="row" data-pos="bottom">
 				Remover linha
 			</button>
 		</div>
