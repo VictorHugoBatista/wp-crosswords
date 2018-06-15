@@ -33,8 +33,8 @@
 		*  @return	n/a
 		*/
 		
-		acf.add_action('ready_field/type=FIELD_NAME', initialize_field);
-		acf.add_action('append_field/type=FIELD_NAME', initialize_field);
+		acf.add_action('ready_field/type=crosswords', initialize_field);
+		acf.add_action('append_field/type=crosswords', initialize_field);
 		
 		
 	} else {
@@ -52,7 +52,7 @@
 		$(document).on('acf/setup_fields', function(e, postbox){
 			
 			// find all relevant fields
-			$(postbox).find('.field[data-field_type="FIELD_NAME"]').each(function(){
+			$(postbox).find('.field[data-field_type="crosswords"]').each(function(){
 				
 				// initialize
 				initialize_field( $(this) );

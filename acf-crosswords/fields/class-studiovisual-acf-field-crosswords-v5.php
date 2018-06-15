@@ -5,10 +5,10 @@ if( ! defined( 'ABSPATH' ) ) exit;
 
 
 // check if class already exists
-if( !class_exists('NAMESPACE_acf_field_FIELD_NAME') ) :
+if( !class_exists('studiovisual_acf_field_crosswords') ) :
 
 
-class NAMESPACE_acf_field_FIELD_NAME extends acf_field {
+class studiovisual_acf_field_crosswords extends acf_field {
 	
 	
 	/*
@@ -30,14 +30,14 @@ class NAMESPACE_acf_field_FIELD_NAME extends acf_field {
 		*  name (string) Single word, no spaces. Underscores allowed
 		*/
 		
-		$this->name = 'FIELD_NAME';
+		$this->name = 'crosswords';
 		
 		
 		/*
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
 		
-		$this->label = __('FIELD_LABEL', 'TEXTDOMAIN');
+		$this->label = __('crosswords', 'TEXTDOMAIN');
 		
 		
 		/*
@@ -58,7 +58,7 @@ class NAMESPACE_acf_field_FIELD_NAME extends acf_field {
 		
 		/*
 		*  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
-		*  var message = acf._e('FIELD_NAME', 'error');
+		*  var message = acf._e('crosswords', 'error');
 		*/
 		
 		$this->l10n = array(
@@ -557,7 +557,7 @@ class NAMESPACE_acf_field_FIELD_NAME extends acf_field {
 
 
 // initialize
-new NAMESPACE_acf_field_FIELD_NAME( $this->settings );
+new studiovisual_acf_field_crosswords( $this->settings );
 
 
 // class_exists check

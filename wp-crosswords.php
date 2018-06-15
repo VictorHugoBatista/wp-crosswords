@@ -37,6 +37,8 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'PLUGIN_NAME_VERSION', '0.0.0' );
 
+require_once 'acf-crosswords/acf-crosswords-field.php';
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wp-crosswords-activator.php

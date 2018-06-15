@@ -1,24 +1,13 @@
 <?php
 
-/*
-Plugin Name: Advanced Custom Fields: FIELD_LABEL
-Plugin URI: PLUGIN_URL
-Description: SHORT_DESCRIPTION
-Version: 1.0.0
-Author: AUTHOR_NAME
-Author URI: AUTHOR_URL
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-*/
-
 // exit if accessed directly
 if( ! defined( 'ABSPATH' ) ) exit;
 
 
 // check if class already exists
-if( !class_exists('NAMESPACE_acf_plugin_FIELD_NAME') ) :
+if( !class_exists('studiovisual_acf_plugin_crosswords') ) :
 
-class NAMESPACE_acf_plugin_FIELD_NAME {
+class studiovisual_acf_plugin_crosswords {
 	
 	// vars
 	var $settings;
@@ -74,14 +63,14 @@ class NAMESPACE_acf_plugin_FIELD_NAME {
 		
 		
 		// include
-		include_once('fields/class-NAMESPACE-acf-field-FIELD-NAME-v' . $version . '.php');
+		include_once('fields/class-studiovisual-acf-field-crosswords-v' . $version . '.php');
 	}
 	
 }
 
 
 // initialize
-new NAMESPACE_acf_plugin_FIELD_NAME();
+new studiovisual_acf_plugin_crosswords();
 
 
 // class_exists check

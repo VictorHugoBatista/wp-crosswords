@@ -5,10 +5,10 @@ if( ! defined( 'ABSPATH' ) ) exit;
 
 
 // check if class already exists
-if( !class_exists('NAMESPACE_acf_field_FIELD_NAME') ) :
+if( !class_exists('studiovisual_acf_field_crosswords') ) :
 
 
-class NAMESPACE_acf_field_FIELD_NAME extends acf_field {
+class studiovisual_acf_field_crosswords extends acf_field {
 	
 	// vars
 	var $settings, // will hold info such as dir / path
@@ -27,8 +27,8 @@ class NAMESPACE_acf_field_FIELD_NAME extends acf_field {
 	function __construct( $settings )
 	{
 		// vars
-		$this->name = 'FIELD_NAME';
-		$this->label = __('FIELD_LABEL');
+		$this->name = 'crosswords';
+		$this->label = __('crosswords');
 		$this->category = __("Basic",'TEXTDOMAIN'); // Basic, Content, Choice, etc
 		$this->defaults = array(
 			// add default here to merge into your field. 
@@ -373,7 +373,7 @@ class NAMESPACE_acf_field_FIELD_NAME extends acf_field {
 
 
 // initialize
-new NAMESPACE_acf_field_FIELD_NAME( $this->settings );
+new studiovisual_acf_field_crosswords( $this->settings );
 
 
 // class_exists check
