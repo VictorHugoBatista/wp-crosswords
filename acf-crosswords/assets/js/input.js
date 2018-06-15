@@ -37,6 +37,14 @@
 				.html(crossword_table.initializeTableEmpty(this.data.crossword_size));
 		},
 		initializeEvents: function() {
+			var self = this;
+			this.elements.$crossword_editor.on('keyup', '.crossword-editor-cell', function(event){
+				var $this = $(event.currentTarget),
+					pos_x = $this.data('x'),
+					pos_y = $this.data('y'),
+					letter = $this.val();
+				self.update_letters(letter, pos_x, pos_y);
+			});
 			this.elements.$crossword_editor_button.on('click', function(event) {
 				event.preventDefault();
 				var $this = $(event.currentTarget),
@@ -45,6 +53,9 @@
 					pos = $this.data('pos');
 				console.log(operator, type, pos);
 			})
+		},
+		update_letters: function(letter, pos_x, pos_y) {
+			this.data.crosword_letters[pos_y][pos_x] = letter;
 		},
 	};
 
