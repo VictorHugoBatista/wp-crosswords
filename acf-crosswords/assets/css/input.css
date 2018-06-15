@@ -1,5 +1,6 @@
 .crossword-editor-wrapper {
-	/* clearfix ? */
+	overflow: auto;
+	zoom: 1;
 }
 
 .crossword-editor-layout-row {
@@ -13,4 +14,24 @@
 .crossword-editor-layout-row,
 .crossword-editor-layout-row-center {
 	float: left;
+}
+
+.crossword-editor-layout-row.row-left {
+	text-align: right;
+}
+
+.crossword-editor-layout-row.row-right {
+	text-align: left;
+}
+
+.crossword-editor-layout-row-control {
+	padding: 95px 0;
+}
+
+.crossword-editor-layout-line-control {
+	text-align: center;
+}
+
+.crossword-editor-button {
+	margin: 3px 0 !important;
 }

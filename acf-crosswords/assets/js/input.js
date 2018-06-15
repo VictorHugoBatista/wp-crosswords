@@ -19,8 +19,8 @@
 		},
 		setupEditor: function() {
 			this.data.crossword_size = {
-				x: 10,
-				y: 10,
+				x: 8,
+				y: 8,
 			};
 			var self = this;
 			this.data.crosword_letters =
