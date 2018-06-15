@@ -138,15 +138,7 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		
 		?>
 		<table class="crossword-editor">
-			<?php for ($tr_index = 0; $tr_index < 10; $tr_index++) : ?>
-			<tr>
-				<?php for ($td_index = 0; $td_index < 10; $td_index++) : ?>
-				<td><input type="text" class="crossword-editor-cell" maxlength="1" /></td>
-				<?php endfor ?>
-			</tr>
-			<?php endfor ?>
 		</table>
-		<input type="text" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" style="font-size:<?php echo $field['font_size'] ?>px;" />
 		<?php
 	}
 	
