@@ -14,6 +14,10 @@
 			}
 			this.elements = {
 				$crossword_editor: $crossword_editor,
+				$crossword_editor_add_col: $('.crossword-editor-add-col'),
+				$crossword_editor_rem_col: $('.crossword-editor-rem-col'),
+				$crossword_editor_add_row: $('.crossword-editor-add-row'),
+				$crossword_editor_rem_row: $('.crossword-editor-rem-row'),
 			};
 			return true;
 		},
