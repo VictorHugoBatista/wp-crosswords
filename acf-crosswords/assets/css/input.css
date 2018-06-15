@@ -44,3 +44,16 @@
 .crossword-editor td {
 	padding: 0;
 }
+
+.crossword-editor .crossword-editor-cell {
+	background-color: #000;
+	border: none;
+	text-align: center;
+	-webkit-transition: background-color 220ms ease-in-out;
+	transition: background-color 220ms ease-in-out;
+	will-change: background-color;
+}
+
+.crossword-editor .crossword-editor-cell.filled {
+	background-color: transparent;
+}
