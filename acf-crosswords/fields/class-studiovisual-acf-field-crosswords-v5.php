@@ -37,14 +37,14 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
 		
-		$this->label = __('crosswords', 'TEXTDOMAIN');
+		$this->label = __('Palavra cruzada', 'TEXTDOMAIN');
 		
 		
 		/*
 		*  category (string) basic | content | choice | relational | jquery | layout | CUSTOM GROUP NAME
 		*/
 		
-		$this->category = 'basic';
+		$this->category = 'layout';
 		
 		
 		/*
@@ -131,24 +131,21 @@ class studiovisual_acf_field_crosswords extends acf_field {
 	*  @return	n/a
 	*/
 	
-	function render_field( $field ) {
-		
-		
-		/*
-		*  Review the data of $field.
-		*  This will show what data is available
-		*/
-		
-		echo '<pre>';
-			print_r( $field );
-		echo '</pre>';
-		
-		
+	function render_field( $field ) {	
 		/*
 		*  Create a simple text input using the 'font_size' setting.
 		*/
 		
 		?>
+		<table>
+			<?php for ($tr_index = 0; $tr_index < 10; $tr_index++) : ?>
+			<tr>
+				<?php for ($td_index = 0; $td_index < 10; $td_index++) : ?>
+				<td><input type="text" /></td>
+				<?php endfor ?>
+			</tr>
+			<?php endfor ?>
+		</table>
 		<input type="text" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" style="font-size:<?php echo $field['font_size'] ?>px;" />
 		<?php
 	}
