@@ -25,7 +25,7 @@
 }
 
 .crossword-editor-layout-row-control {
-	padding: 95px 0;
+	padding: 65px 0 0;
 }
 
 .crossword-editor-layout-line-control {
@@ -37,7 +37,9 @@
 }
 
 .crossword-editor {
+	border-radius: 3px;
 	border-collapse: collapse;
+	overflow: hidden;
 	margin: 2.5px 7.5px;
 }
 
