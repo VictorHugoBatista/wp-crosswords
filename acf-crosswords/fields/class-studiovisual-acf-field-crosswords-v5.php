@@ -140,19 +140,19 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		<input type="hidden" class="crossword-editor-hidden" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" />
 		<div class="crossword-editor-layout-line-control">
 			<button class="crossword-editor-button button button-primary" data-operator="add" data-type="row" data-pos="up">
-				Adicionar linha
+				<span class="dashicons dashicons-plus"></span>
 			</button>
 			<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="row" data-pos="up">
-				Remover linha
+				<span class="dashicons dashicons-minus"></span>
 			</button>
 		</div>
 		<div class="crossword-editor-wrapper">
 			<div class="crossword-editor-layout-row row-left crossword-editor-layout-row-control">
 				<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="left">
-					Adicionar coluna
+					<span class="dashicons dashicons-plus"></span>
 				</button>
 				<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="left">
-					Remover coluna
+					<span class="dashicons dashicons-minus"></span>
 				</button>
 			</div>
 			<div class="crossword-editor-layout-row-center">
@@ -161,19 +161,19 @@ class studiovisual_acf_field_crosswords extends acf_field {
 			</div>
 			<div class="crossword-editor-layout-row row-right crossword-editor-layout-row-control">
 				<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="right">
-					Adicionar coluna
+					<span class="dashicons dashicons-plus"></span>
 				</button>
 				<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="right">
-					Remover coluna
+					<span class="dashicons dashicons-minus"></span>
 				</button>
 			</div>
 		</div>
 		<div class="crossword-editor-layout-line-control">
 			<button class="crossword-editor-button button button-primary" data-operator="add" data-type="row" data-pos="bottom">
-				Adicionar linha
+				<span class="dashicons dashicons-plus"></span>
 			</button>
 			<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="row" data-pos="bottom">
-				Remover linha
+				<span class="dashicons dashicons-minus"></span>
 			</button>
 		</div>
 		<?php
