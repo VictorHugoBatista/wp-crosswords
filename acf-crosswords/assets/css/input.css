@@ -1,0 +1,74 @@
+.crossword-editor-wrapper {
+	overflow: hidden;
+	zoom: 1;
+}
+
+.crossword-editor-layout-row {
+	width: 30px;
+}
+
+.crossword-editor-layout-row-center {
+	overflow: auto;
+	text-align: center;
+	width: calc(100% - 60px);
+}
+
+.crossword-editor-layout-row,
+.crossword-editor-layout-row-center {
+	float: left;
+}
+
+.crossword-editor-layout-row.row-left {
+	text-align: right;
+}
+
+.crossword-editor-layout-row.row-right {
+	text-align: left;
+}
+
+.crossword-editor-layout-row-control {
+	padding: 65px 0 0;
+}
+
+.crossword-editor-layout-line-control {
+	text-align: center;
+}
+
+.crossword-editor-button {
+	margin: 3px 0 !important;
+	padding: 4px !important;
+}
+
+.crossword-editor {
+	border-radius: 3px;
+	border-collapse: collapse;
+	display: inline-block;
+	margin: 2.5px 7.5px;
+	overflow: hidden;
+}
+
+.crossword-editor td {
+	height: 35px;
+	padding: 0;
+	width: 35px;
+}
+
+.crossword-editor .crossword-editor-cell {
+	background-color: #000;
+	border: none;
+	height: 100%;
+	text-align: center;
+	-webkit-transition: background-color 220ms ease-in-out;
+	transition: background-color 220ms ease-in-out;
+	will-change: background-color;
+	width: 100%;
+}
+
+.crossword-editor .crossword-editor-cell.filled,
+.crossword-editor .crossword-editor-cell:focus {
+	background-color: transparent;
+}
+
+.crossword-editor .crossword-editor-cell:hover {
+	background-color: #fff;
+}

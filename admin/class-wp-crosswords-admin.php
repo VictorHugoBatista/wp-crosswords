@@ -100,4 +100,17 @@ class Wp_Crosswords_Admin {
 
 	}
 
+	public function create_cpt_crossword() {
+		register_post_type( 'crossword',
+			[
+				'labels' => [
+					'name' => 'Palavras Cruzadas',
+					'singular_name' => 'Palavra Cruzada',
+				],
+				'public' => true,
+				'has_archive' => false,
+				'menu_icon' => 'dashicons-layout',
+			]
+		);		
+	}
 }

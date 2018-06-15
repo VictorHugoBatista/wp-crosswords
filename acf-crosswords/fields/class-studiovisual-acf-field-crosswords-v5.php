@@ -37,14 +37,14 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		*  label (string) Multiple words, can include spaces, visible when selecting a field type
 		*/
 		
-		$this->label = __('crosswords', 'TEXTDOMAIN');
+		$this->label = __('Palavra cruzada', 'TEXTDOMAIN');
 		
 		
 		/*
 		*  category (string) basic | content | choice | relational | jquery | layout | CUSTOM GROUP NAME
 		*/
 		
-		$this->category = 'basic';
+		$this->category = 'layout';
 		
 		
 		/*
@@ -131,25 +131,59 @@ class studiovisual_acf_field_crosswords extends acf_field {
 	*  @return	n/a
 	*/
 	
-	function render_field( $field ) {
-		
-		
-		/*
-		*  Review the data of $field.
-		*  This will show what data is available
-		*/
-		
-		echo '<pre>';
-			print_r( $field );
-		echo '</pre>';
-		
-		
+	function render_field( $field ) {	
 		/*
 		*  Create a simple text input using the 'font_size' setting.
 		*/
 		
 		?>
-		<input type="text" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" style="font-size:<?php echo $field['font_size'] ?>px;" />
+		<input type="hidden" class="crossword-editor-hidden" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" />
+		<div class="crossword-editor-layout-line-control">
+			<button class="crossword-editor-button button button-primary" data-operator="add" data-type="row" data-pos="up" title="Adicionar linha">
+				<span class="dashicons dashicons-plus"></span>
+			</button>
+			<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="row" data-pos="up" title="Remover linha">
+				<span class="dashicons dashicons-minus"></span>
+			</button>
+		</div>
+		<div class="crossword-editor-wrapper">
+			<div class="crossword-editor-layout-row row-left crossword-editor-layout-row-control">
+				<div>
+					<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="left" title="Adicionar coluna">
+						<span class="dashicons dashicons-plus"></span>
+					</button>
+				</div>
+				<div>
+					<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="left" title="Remover coluna">
+						<span class="dashicons dashicons-minus"></span>
+					</button>
+				</div>
+			</div>
+			<div class="crossword-editor-layout-row-center">
+				<table class="crossword-editor">
+				</table>
+			</div>
+			<div class="crossword-editor-layout-row row-right crossword-editor-layout-row-control">
+				<div>
+					<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="right" title="Adicionar coluna">
+						<span class="dashicons dashicons-plus"></span>
+					</button>
+				</div>
+				<div>
+					<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="right" title="Remover coluna">
+						<span class="dashicons dashicons-minus"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="crossword-editor-layout-line-control">
+			<button class="crossword-editor-button button button-primary" data-operator="add" data-type="row" data-pos="bottom" title="Adicionar linha">
+				<span class="dashicons dashicons-plus"></span>
+			</button>
+			<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="row" data-pos="bottom" title="Remover linha">
+				<span class="dashicons dashicons-minus"></span>
+			</button>
+		</div>
 		<?php
 	}
 	
@@ -167,8 +201,6 @@ class studiovisual_acf_field_crosswords extends acf_field {
 	*  @param	n/a
 	*  @return	n/a
 	*/
-
-	/*
 	
 	function input_admin_enqueue_scripts() {
 		
@@ -187,8 +219,6 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		wp_enqueue_style('TEXTDOMAIN');
 		
 	}
-	
-	*/
 	
 	
 	/*
