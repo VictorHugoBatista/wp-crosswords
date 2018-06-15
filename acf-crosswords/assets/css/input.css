@@ -1,0 +1,16 @@
+.crossword-editor-wrapper {
+	/* clearfix ? */
+}
+
+.crossword-editor-layout-row {
+	width: 15%;
+}
+
+.crossword-editor-layout-row-center {
+	width: 70%;
+}
+
+.crossword-editor-layout-row,
+.crossword-editor-layout-row-center {
+	float: left;
+}
