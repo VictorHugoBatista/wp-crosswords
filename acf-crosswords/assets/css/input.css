@@ -68,3 +68,7 @@
 .crossword-editor .crossword-editor-cell:focus {
 	background-color: transparent;
 }
+
+.crossword-editor .crossword-editor-cell:hover {
+	background-color: #fff;
+}
