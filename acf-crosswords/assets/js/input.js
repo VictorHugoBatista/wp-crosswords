@@ -43,7 +43,7 @@
 					pos_x = $this.data('x'),
 					pos_y = $this.data('y'),
 					letter = $this.val();
-				self.update_letters(letter, pos_x, pos_y);
+				self.updateLetters(letter, pos_x, pos_y);
 			});
 			this.elements.$crossword_editor_button.on('click', function(event) {
 				event.preventDefault();
@@ -54,7 +54,7 @@
 				console.log(operator, type, pos);
 			})
 		},
-		update_letters: function(letter, pos_x, pos_y) {
+		updateLetters: function(letter, pos_x, pos_y) {
 			this.data.crosword_letters[pos_y][pos_x] = letter;
 		},
 	};
