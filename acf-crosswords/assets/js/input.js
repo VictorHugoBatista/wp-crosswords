@@ -55,7 +55,7 @@
 				table_html += '<tr>';
 				for (td_index = 0; td_index < size.x; td_index++) {
 					table_html += '<td>';
-					table_html += '    <input type="text" class="crossword-editor-cell" maxlength="1">';
+					table_html += '    <input type="text" class="crossword-editor-cell" data-x="' + td_index + '" data-y="' + tr_index + '" maxlength="1">';
 					table_html += '</td>';
 				}
 				table_html += '</tr>';
