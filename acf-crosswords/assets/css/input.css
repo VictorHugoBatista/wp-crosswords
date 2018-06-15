@@ -8,6 +8,8 @@
 }
 
 .crossword-editor-layout-row-center {
+	overflow: auto;
+	text-align: center;
 	width: calc(100% - 60px);
 }
 
@@ -40,21 +42,26 @@
 .crossword-editor {
 	border-radius: 3px;
 	border-collapse: collapse;
-	overflow: hidden;
+	display: inline-block;
 	margin: 2.5px 7.5px;
+	overflow: hidden;
 }
 
 .crossword-editor td {
+	height: 35px;
 	padding: 0;
+	width: 35px;
 }
 
 .crossword-editor .crossword-editor-cell {
 	background-color: #000;
 	border: none;
+	height: 100%;
 	text-align: center;
 	-webkit-transition: background-color 220ms ease-in-out;
 	transition: background-color 220ms ease-in-out;
 	will-change: background-color;
+	width: 100%;
 }
 
 .crossword-editor .crossword-editor-cell.filled,
