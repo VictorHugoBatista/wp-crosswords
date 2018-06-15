@@ -31,16 +31,24 @@
 		},
 		initializeFields: function() {
 			var table_html = '';
-			for (tr_index = 0; tr_index < this.data.crossword_size.y; tr_index++) {
+			this.elements.$crossword_editor
+				.html(crossword_table.initializeTableEmpty(this.data.crossword_size));
+		},
+	};
+
+	var crossword_table = {
+		initializeTableEmpty: function(size) {
+			var table_html = '';
+			for (tr_index = 0; tr_index < size.y; tr_index++) {
 				table_html += '<tr>';
-				for (td_index = 0; td_index < this.data.crossword_size.x; td_index++) {
+				for (td_index = 0; td_index < size.x; td_index++) {
 					table_html += '<td>';
 					table_html += '    <input type="text" class="crossword-editor-cell" maxlength="1">';
 					table_html += '</td>';
 				}
 				table_html += '</tr>';
 			}
-			this.elements.$crossword_editor.html(table_html);
+			return table_html;
 		},
 	};
 	
