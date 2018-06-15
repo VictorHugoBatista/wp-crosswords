@@ -1,5 +1,34 @@
 (function($){
-	
+	var crossword_editor = {
+		data: {},
+		elements: {},
+		initialize: function() {
+			if (this.initializeElements()) {
+				this.setupEditor();
+			}
+		},
+		initializeElements: function() {			
+			var $crossword_editor = $('.crossword-editor');
+			if (! $crossword_editor.length) {
+				return false;
+			}
+			this.elements = {
+				$crossword_editor: $crossword_editor,
+			};
+			return true;
+		},
+		setupEditor: function() {
+			this.data.crossword_size = {
+				x: 10,
+				y: 10,
+			};
+			var self = this;
+			this.data.crosword_letters =
+				Array(this.data.crossword_size.y).fill().map(function(){
+					return Array(self.data.crossword_size.x).fill()
+				});
+		}, 
+	};
 	
 	/**
 	*  initialize_field
@@ -14,9 +43,7 @@
 	*/
 	
 	function initialize_field( $field ) {
-		
-		//$field.doStuff();
-		
+		crossword_editor.initialize();
 	}
 	
 	
