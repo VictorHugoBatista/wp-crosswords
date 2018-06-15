@@ -26,8 +26,8 @@
 			};
 			var self = this;
 			this.data.crosword_letters =
-				Array(this.data.crossword_size.y).fill().map(function(){
-					return Array(self.data.crossword_size.x).fill()
+				Array(this.data.crossword_size.y).fill('').map(function(){
+					return Array(self.data.crossword_size.x).fill('')
 				});
 			this.initializeFields();
 		},
