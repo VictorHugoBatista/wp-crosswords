@@ -93,12 +93,12 @@
 	margin-top: 5px;
 	padding: 6px 0;
 	text-align: center;
-	-webkit-transition: 230ms ease-in-out;
-	transition: 230ms ease-in-out;
+	-webkit-transition: 250ms ease-in-out;
+	transition: 250ms ease-in-out;
 }
 
 .crossword-editor-generated-shortcode-box:hover {
-	background-color: #444444;
+	background-color: #444444 !important;
 	border-color: #f2f2f2;
 	color: #f2f2f2;
 }
