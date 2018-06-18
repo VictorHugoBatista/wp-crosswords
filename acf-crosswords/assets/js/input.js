@@ -106,7 +106,10 @@
 					);
 					this.data.crossword_size.y++;
 				} else { // rem
-					//
+					this.data.crosword_letters.splice(0, 1);
+					this.data.crosword_letters =
+						this.data.crosword_letters.filter(function(val){return val});
+					this.data.crossword_size.y--;
 				}
 			}
 			this.repaintCrossword();
