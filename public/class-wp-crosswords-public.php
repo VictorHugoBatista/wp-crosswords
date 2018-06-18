@@ -100,4 +100,12 @@ class Wp_Crosswords_Public {
 
 	}
 
+	public function create_shortcode_palavra_cruzada() {
+		add_shortcode('palavra_cruzada', function($atts) {
+		    $data = shortcode_atts( array(
+		        'id' => '',
+		    ), $atts );
+		    return "--- id=\"{$data['id']}\" ---";
+		});
+	}
 }
