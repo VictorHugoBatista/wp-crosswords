@@ -4,7 +4,7 @@
 		<?php foreach ($row as $cell) : ?>
 		<?php if ('' !== $cell) : ?>
 		<td class="bordered">
-			<?php echo $cell ?>
+			<input type="text" class="crossword-puzzle-cell" value="<?php echo $cell ?>" />
 		</td>
 		<?php else : ?>
 		<td></td>

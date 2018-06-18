@@ -4,11 +4,20 @@
  */
 
  .crossword-puzzle td {
-	height: 30px;
+	height: 35px;
 	padding: 0;
-	width: 30px;
+	width: 35px;
  }
 
  .crossword-puzzle td.bordered {
 	border: 2px solid #000;
  }
+
+.crossword-puzzle .crossword-puzzle-cell {
+	background-color: #fff;
+	border: none;
+	border-radius: none;
+	height: 100%;
+	text-align: center;
+	width: 100%;
+}
