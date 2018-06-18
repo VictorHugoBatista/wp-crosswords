@@ -148,15 +148,17 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		</div>
 		<div class="crossword-editor-wrapper">
 			<div class="crossword-editor-layout-row row-left crossword-editor-layout-row-control">
-				<div>
-					<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="left" title="Adicionar coluna">
-						<span class="dashicons dashicons-plus"></span>
-					</button>
-				</div>
-				<div>
-					<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="left" title="Remover coluna">
-						<span class="dashicons dashicons-minus"></span>
-					</button>
+				<div class="crossword-editor-layout-row-control-inner">
+					<div>
+						<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="left" title="Adicionar coluna">
+							<span class="dashicons dashicons-plus"></span>
+						</button>
+					</div>
+					<div>
+						<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="left" title="Remover coluna">
+							<span class="dashicons dashicons-minus"></span>
+						</button>
+					</div>
 				</div>
 			</div>
 			<div class="crossword-editor-layout-row-center">
@@ -164,15 +166,17 @@ class studiovisual_acf_field_crosswords extends acf_field {
 				</table>
 			</div>
 			<div class="crossword-editor-layout-row row-right crossword-editor-layout-row-control">
-				<div>
-					<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="right" title="Adicionar coluna">
-						<span class="dashicons dashicons-plus"></span>
-					</button>
-				</div>
-				<div>
-					<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="right" title="Remover coluna">
-						<span class="dashicons dashicons-minus"></span>
-					</button>
+				<div class="crossword-editor-layout-row-control-inner">
+					<div>
+						<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="right" title="Adicionar coluna">
+							<span class="dashicons dashicons-plus"></span>
+						</button>
+					</div>
+					<div>
+						<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="col" data-pos="right" title="Remover coluna">
+							<span class="dashicons dashicons-minus"></span>
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

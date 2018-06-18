@@ -27,7 +27,15 @@
 }
 
 .crossword-editor-layout-row-control {
-	padding: 65px 0 0;
+	min-height: 65px;
+	position: relative;
+}
+
+.crossword-editor-layout-row-control-inner {
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 .crossword-editor-layout-line-control {
