@@ -64,16 +64,19 @@
 				var $this = $(event.currentTarget),
 					operator = $this.data('operator'),
 					type = $this.data('type'),
-					pos = $this.data('pos');
-				if ('row' === type) {
-					self.updateRow(operator, pos);
-				} else {
-					self.updateCol(operator, pos);
-				}
-			})
+					pos = $this.data('pos'),
+					updated_crossword = 'row' === type ?
+						self.updateRow(operator, pos) :
+						self.updateCol(operator, pos);
+				self.elements.$crossword_editor.html(updated_crossword);
+				self.updateInputHidden();
+			});
 		},
 		updateLetters: function(letter, pos_x, pos_y) {
 			this.data.crosword_letters[pos_y][pos_x] = letter;
+			this.updateInputHidden();
+		},
+		updateInputHidden() {
 			this.elements.$crossword_editor_hidden
 				.val(JSON.stringify(this.data.crosword_letters));
 		},
@@ -84,16 +87,25 @@
 					this.data.crosword_letters.push(
 						Array(this.data.crossword_size.x).fill('')
 					);
+					this.data.crossword_size.y++;
 				} else { // rem
 					this.data.crosword_letters.splice(
 						this.data.crosword_letters.length - 1
 					);
+					this.data.crossword_size.y--;
 				}
-				console.log(this.data.crosword_letters);
 			}
+			return crossword_table.regenerate(
+				this.data.crosword_letters,
+				this.data.crossword_size
+			);
 		},
 		updateCol: function(operator, pos) {
 			console.log('[update-col]', operator, pos);
+			return crossword_table.regenerate(
+				this.data.crosword_letters,
+				this.data.crossword_size
+			);
 		},
 	};
 
