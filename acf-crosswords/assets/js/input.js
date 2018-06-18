@@ -100,7 +100,14 @@
 					this.data.crossword_size.y--;
 				}
 			} else {
-
+				if ('add' === operator) {
+					this.data.crosword_letters.unshift(
+						Array(this.data.crossword_size.x).fill('')
+					);
+					this.data.crossword_size.y++;
+				} else { // rem
+					//
+				}
 			}
 			this.repaintCrossword();
 		},
