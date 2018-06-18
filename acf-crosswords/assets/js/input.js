@@ -96,14 +96,12 @@
 				this.data.crossword_size.y++;
 			} else { // rem
 				var position_to_remove = 'bottom' === pos ?
-					this.data.crosword_letters.length - 1 : 0;
-				this.data.crosword_letters.splice(
-					position_to_remove, 1
-				);
-				if ('top' === pos) {
-					this.data.crosword_letters =
-						this.data.crosword_letters.filter(function(val){return val});
-				}
+					'begin' : 'end';
+				this.data.crosword_letters =
+					array_functions.remove_item(
+						this.data.crosword_letters,
+						position_to_remove
+					);
 				this.data.crossword_size.y--;
 			}
 			this.repaintCrossword();
@@ -132,6 +130,18 @@
 				table_html += '</tr>';
 			}
 			return table_html;
+		},
+	};
+
+	var array_functions = {
+		remove_item: function(array, position) {
+			var index_to_remove = 'begin' === position ?
+				array.length - 1 : 0;
+			array.splice(index_to_remove, 1);
+			if ('begin' === position) {
+				array = array.filter(function(val){return val});
+			}
+			return array;
 		},
 	};
 	
