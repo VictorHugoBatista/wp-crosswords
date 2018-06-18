@@ -137,7 +137,17 @@
 		},
 	};
 
+	/**
+	 * Responsável por gerar os htmls da tabela
+	 * do editor de palavras cruzadas.
+	 */
 	var crossword_table = {
+		/**
+		 * Gera o html da tabela do gerador de palavras cruzadas.
+		 * @param {array} Array bidimensional com os dados à serem exibidos.
+		 * @param {object} Objeto com o tamanho do editor em x e y.
+		 * @returns {string} Texto com a tabela gerada.
+		 */
 		regenerate: function(letters, size) {
 			var table_html = '';
 			for (tr_index = 0; tr_index < size.y; tr_index++) {
