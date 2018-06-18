@@ -1,13 +1,31 @@
 (function($){
+
+	/**
+	 * Responsável pelas interações e eventos do editor de palavras cruzadas.
+	 */
 	var crossword_editor = {
+		/**
+		 * Detém todos os dados relacionados ao componente.
+		 */
 		data: {},
+
+		/**
+		 * Detém todos os objetos jQuery relacionados ao componente.
+		 */
 		elements: {},
+
 		initialize: function() {
 			if (this.initializeElements()) {
 				this.setupEditor();
 				this.initializeEvents();
 			}
 		},
+
+		/**
+		 * Instancia e cacheia todos os objetos jQuery
+		 * relevantes relacionados ao componente.
+		 * @returns {boolean} Verdadeiro se o componente existe na página.
+		 */
 		initializeElements: function() {			
 			var $crossword_editor = $('.crossword-editor');
 			if (! $crossword_editor.length) {
@@ -20,6 +38,10 @@
 			};
 			return true;
 		},
+
+		/**
+		 * Inicializa o html da tabela do editor e a propriedade data.
+		 */
 		setupEditor: function() {
 			var value = this.elements.$crossword_editor_hidden.val(); 
 			if ('' === value) {
@@ -39,11 +61,18 @@
 			}
 			this.initializeFields();
 		},
+		
 		initializeFields: function() {
 			this.repaintCrossword();
 		},
+
+		/**
+		 * Inicializa os eventos relacionados ao componente.
+		 */
 		initializeEvents: function() {
 			var self = this;
+
+			// Digitar nos campos da tabela do editor.
 			this.elements.$crossword_editor.on('keyup', '.crossword-editor-cell', function(event) {
 				var $this = $(event.currentTarget),
 					pos_x = $this.data('x'),
@@ -56,6 +85,8 @@
 					$this.removeClass('filled');
 				}
 			});
+
+			// Click nos botões de adição/remoção de linhas/colunas.
 			this.elements.$crossword_editor_button.on('click', function(event) {
 				event.preventDefault();
 				var $this = $(event.currentTarget),
@@ -69,6 +100,11 @@
 				self.updateCol(operator, pos);
 			});
 		},
+
+		/**
+		 * Atualiza a tabela do editor de palavras cruzadas
+		 * à partir dos dados carregados na propriedade data.
+		 */
 		repaintCrossword: function() {
 			var crossword = crossword_table.regenerate(
 				this.data.crosword_letters,
@@ -77,14 +113,32 @@
 			this.elements.$crossword_editor.html(crossword);
 			this.updateInputHidden();
 		},
+
+		/**
+		 * Atualiza uma item na propriedade crosword_letters.
+		 * crosword_letters[pos_y][pos_x]
+		 * @param {string} letter Novo dado à atualizar o objeto.
+		 * @param {string} pos_x Posição à atualizar no x
+		 * @param {string} pos_y Posição à atualizar no y
+		 */
 		updateLetters: function(letter, pos_x, pos_y) {
 			this.data.crosword_letters[pos_y][pos_x] = letter;
 			this.updateInputHidden();
 		},
+
+		/**
+		 * Atualiza o input hidden com o a propriedade crosword_letters.
+		 */
 		updateInputHidden() {
 			this.elements.$crossword_editor_hidden
 				.val(JSON.stringify(this.data.crosword_letters));
 		},
+
+		/**
+		 * Adiciona ou remove uma linha da tabela do editor.
+		 * @param {string} operator Determina se a linha será adicionada ou removida. add | rem.
+		 * @param {string} pos Posição onde a linha será adicionada ou removida. bottom | top.
+		 */
 		updateRow: function(operator, pos) {
 			if ('add' === operator) {
 				var new_row = Array(this.data.crossword_size.x).fill('');
@@ -108,6 +162,12 @@
 			}
 			this.repaintCrossword();
 		},
+
+		/**
+		 * Adiciona ou remove uma coluna da tabela do editor.
+		 * @param {string} operator Determina se a coluna será adicionada ou removida. add | rem.
+		 * @param {string} pos Posição onde a coluna será adicionada ou removida. left | right.
+		 */
 		updateCol: function(operator, pos) {
 			var position_to_remove = 'left' === pos ? 'begin' : 'end';
 			for (var row_index in this.data.crosword_letters) {
