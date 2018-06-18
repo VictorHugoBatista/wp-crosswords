@@ -18,14 +18,6 @@
 	float: left;
 }
 
-.crossword-editor-layout-row.row-left {
-	text-align: right;
-}
-
-.crossword-editor-layout-row.row-right {
-	text-align: left;
-}
-
 .crossword-editor-layout-row-control {
 	min-height: 65px;
 	position: relative;

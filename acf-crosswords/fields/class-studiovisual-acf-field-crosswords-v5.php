@@ -147,7 +147,7 @@ class studiovisual_acf_field_crosswords extends acf_field {
 			</button>
 		</div>
 		<div class="crossword-editor-wrapper">
-			<div class="crossword-editor-layout-row row-left crossword-editor-layout-row-control">
+			<div class="crossword-editor-layout-row crossword-editor-layout-row-control">
 				<div class="crossword-editor-layout-row-control-inner">
 					<div>
 						<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="left" title="Adicionar coluna">
@@ -165,7 +165,7 @@ class studiovisual_acf_field_crosswords extends acf_field {
 				<table class="crossword-editor">
 				</table>
 			</div>
-			<div class="crossword-editor-layout-row row-right crossword-editor-layout-row-control">
+			<div class="crossword-editor-layout-row crossword-editor-layout-row-control">
 				<div class="crossword-editor-layout-row-control-inner">
 					<div>
 						<button class="crossword-editor-button button button-primary" data-operator="add" data-type="col" data-pos="right" title="Adicionar coluna">
