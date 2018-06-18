@@ -87,14 +87,11 @@
 		},
 		updateRow: function(operator, pos) {
 			if ('add' === operator) {
+				var new_row = Array(this.data.crossword_size.x).fill('');
 				if ('bottom' === pos) {
-					this.data.crosword_letters.push(
-						Array(this.data.crossword_size.x).fill('')
-					);
+					this.data.crosword_letters.push(new_row);
 				} else { // top
-					this.data.crosword_letters.unshift(
-						Array(this.data.crossword_size.x).fill('')
-					);
+					this.data.crosword_letters.unshift(new_row);
 				}
 				this.data.crossword_size.y++;
 			} else { // rem
