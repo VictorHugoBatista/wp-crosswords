@@ -108,6 +108,28 @@
 		},
 		updateCol: function(operator, pos) {
 			console.log('[update-col]', operator, pos);
+			for (var row_index in this.data.crosword_letters) {
+				var current_row = this.data.crosword_letters[row_index];
+				console.log(current_row);
+				if ('add' === operator) {
+					if ('right' === pos) {
+						current_row.push('');
+					} else { // left
+						current_row.unshift('');
+					}
+				} else { // rem
+					if ('right' === pos) {
+						//
+					} else { // left
+						//
+					}
+				}
+			}
+			if ('add' === operator) {
+				this.data.crossword_size.x++;
+			} else { // rem
+				this.data.crossword_size.x--;
+			}
 			this.repaintCrossword();
 		},
 	};
