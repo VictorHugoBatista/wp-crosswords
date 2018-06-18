@@ -1,4 +1,4 @@
-<form action="">
+<form class="crossword-puzzle-form" action="">
 	<table class="crossword-puzzle">
 		<?php foreach ($crossword as $key_row => $row) : ?>
 		<tr>
@@ -15,5 +15,7 @@
 		</tr>
 		<?php endforeach ?>
 	</table>
-	<button>Resolver</button>
+	<div class="text-center">
+		<button>Resolver</button>
+	</div>
 </form>
