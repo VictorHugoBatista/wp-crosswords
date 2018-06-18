@@ -95,7 +95,7 @@
 				}
 				this.data.crossword_size.y++;
 			} else { // rem
-				var position_to_remove = 'bottom' === pos ?
+				var position_to_remove = 'top' === pos ?
 					'begin' : 'end';
 				array_functions.remove_item(
 					this.data.crosword_letters,
@@ -106,7 +106,7 @@
 			this.repaintCrossword();
 		},
 		updateCol: function(operator, pos) {
-			var position_to_remove = 'right' === pos ? 'begin' : 'end';
+			var position_to_remove = 'left' === pos ? 'begin' : 'end';
 			for (var row_index in this.data.crosword_letters) {
 				var current_row = this.data.crosword_letters[row_index];
 				if ('add' === operator) {
@@ -155,7 +155,7 @@
 	var array_functions = {
 		remove_item: function(array, position) {
 			var index_to_remove = 'begin' === position ?
-				array.length - 1 : 0;
+				0 : array.length - 1;
 			array.splice(index_to_remove, 1);
 			if ('begin' === position) {
 				array = array.filter(function(val){return val});
