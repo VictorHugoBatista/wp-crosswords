@@ -33,10 +33,10 @@
 .crossword-puzzle-button {
 	background-color: #11998e;
 	border: none;
-	border-radius: 15px;
+	border-radius: 20px;
 	cursor: pointer;
 	color: #fff;
-	font-size: 16px;
+	font-size: 17px;
 	-webkit-transition: 230ms ease-in-out;
 	transition: 230ms ease-in-out;
 	padding: 5px 18px;
