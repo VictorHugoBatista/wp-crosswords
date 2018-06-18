@@ -274,6 +274,35 @@
 			return array;
 		},
 	};
+
+	var clipboarder = {
+		elements: {},
+		initialize: function() {
+			if (this.initializeElements()) {
+				this.initializeEvents();
+			}
+		},
+		initializeElements: function() {
+			var $clipboarder = $('.clipboarder');
+			if (! $clipboarder.length) {
+				return false;
+			}
+			this.elements.$clipboarder = $('.clipboarder');
+			return true;
+		},
+		initializeEvents: function() {
+			this.elements.$clipboarder.on('click', function(event) {
+				var element = event.currentTarget,
+					$tooltip = $(element).siblings('.clipboarder-tooltip');
+				element.select();
+				document.execCommand('copy');
+				$tooltip.addClass('show');
+				setTimeout(function() {
+					$tooltip.removeClass('show');
+				}, 800);
+			});
+		},
+	};
 	
 	/**
 	*  initialize_field
@@ -289,6 +318,7 @@
 	
 	function initialize_field( $field ) {
 		crossword_editor.initialize();
+		clipboarder.initialize();
 	}
 	
 	
