@@ -79,6 +79,18 @@
 		},
 		updateRow: function(operator, pos) {
 			console.log('[update-row]', operator, pos);
+			if ('bottom' === pos) {
+				if ('add' === operator) {
+					this.data.crosword_letters.push(
+						Array(this.data.crossword_size.x).fill('')
+					);
+				} else { // rem
+					this.data.crosword_letters.splice(
+						this.data.crosword_letters.length - 1
+					);
+				}
+				console.log(this.data.crosword_letters);
+			}
 		},
 		updateCol: function(operator, pos) {
 			console.log('[update-col]', operator, pos);
