@@ -36,6 +36,7 @@
 				$crossword_editor_button: $('.crossword-editor-button'),
 				$crossword_editor_hidden: $('.crossword-editor-hidden'),
 				$crossword_editor_layout_row_control: $('.crossword-editor-layout-row-control'),
+				$publish: $('#publish'),
 			};
 			return true;
 		},
@@ -60,6 +61,7 @@
 					y: value.length,
 				};
 			}
+			this.need_confirm = false;
 			this.repaintCrossword();
 		},
 
@@ -75,6 +77,7 @@
 					pos_x = $this.data('x'),
 					pos_y = $this.data('y'),
 					letter = $this.val();
+				self.need_confirm = true;
 				self.updateLetters(letter, pos_x, pos_y);
 				if ('' !== letter) {
 					$this.addClass('filled');
@@ -90,12 +93,27 @@
 					operator = $this.data('operator'),
 					type = $this.data('type'),
 					pos = $this.data('pos');
+				self.need_confirm = true;
 				if ('row' === type) {
 					self.updateRow(operator, pos);
 					return;
 				}
 				self.updateCol(operator, pos);
 			});
+
+			// Click no botão Publicar/Atualizar.
+			// Cancela a menssagem de confirmação ao sair da página.
+			this.elements.$publish.on('click', function() {
+				self.need_confirm = false;
+			});
+
+			// Exibe menssagem de confirmação ao sair
+			// da página caso dados tenham sido alterados.
+			window.onbeforeunload = function() {
+				if (self.need_confirm) {
+					return '';
+				}
+			};
 		},
 
 		/**
