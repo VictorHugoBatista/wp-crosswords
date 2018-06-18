@@ -17,6 +17,8 @@
 		<?php endforeach ?>
 	</table>
 	<div class="text-center">
-		<button>Resolver</button>
+		<button class="crossword-puzzle-button">
+			Resolver
+		</button>
 	</div>
 </form>
