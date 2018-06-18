@@ -23,14 +23,11 @@
 		setupEditor: function() {
 			var value = this.elements.$crossword_editor_hidden.val(); 
 			if ('' === value) {
-				this.data.crossword_size = {
-					x: 8,
-					y: 8,
-				};
+				this.data.crossword_size = {x: 15, y: 15};
 				var self = this;
 				this.data.crosword_letters =
-					Array(this.data.crossword_size.y).fill('').map(function(){
-						return Array(self.data.crossword_size.x).fill('')
+					Array(this.data.crossword_size.y).fill('').map(function() {
+						return Array(self.data.crossword_size.x).fill('');
 					});
 			} else {
 				value = JSON.parse(value);
@@ -43,8 +40,10 @@
 			this.initializeFields();
 		},
 		initializeFields: function() {
-			this.elements.$crossword_editor
-				.html(crossword_table.regenerate(this.data.crosword_letters, this.data.crossword_size));
+			var crossword_letters = this.data.crosword_letters,
+				crossword_size = this.data.crossword_size,
+				crossword = crossword_table.regenerate(crossword_letters, crossword_size);
+			this.elements.$crossword_editor.html(crossword);
 		},
 		initializeEvents: function() {
 			var self = this;
@@ -85,7 +84,10 @@
 					var value = letters[tr_index][td_index],
 						filled_class = '' !== value ? 'filled' : '';
 					table_html += '<td>';
-					table_html += '    <input type="text" class="crossword-editor-cell ' + filled_class + '" data-x="' + td_index + '" data-y="' + tr_index + '" value="' + value + '" maxlength="1">';
+					table_html += '    <input type="text"';
+					table_html += '        class="crossword-editor-cell ' + filled_class + '"';
+					table_html += '        data-x="' + td_index + '" data-y="' + tr_index + '"';
+					table_html += '        value="' + value + '" maxlength="1">';
 					table_html += '</td>';
 				}
 				table_html += '</tr>';
