@@ -65,13 +65,23 @@
 					operator = $this.data('operator'),
 					type = $this.data('type'),
 					pos = $this.data('pos');
-				console.log(operator, type, pos);
+				if ('row' === type) {
+					self.updateRow(operator, pos);
+				} else {
+					self.updateCol(operator, pos);
+				}
 			})
 		},
 		updateLetters: function(letter, pos_x, pos_y) {
 			this.data.crosword_letters[pos_y][pos_x] = letter;
 			this.elements.$crossword_editor_hidden
 				.val(JSON.stringify(this.data.crosword_letters));
+		},
+		updateRow: function(operator, pos) {
+			console.log('[update-row]', operator, pos);
+		},
+		updateCol: function(operator, pos) {
+			console.log('[update-col]', operator, pos);
 		},
 	};
 
