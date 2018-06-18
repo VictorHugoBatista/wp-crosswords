@@ -1,8 +1,7 @@
 <div class="crossword-editor-generated-shortcode">
 	<div class="crossword-editor-generated-shortcode-inner">
 		<div>Shortcode gerado:</div>
-		<div class="crossword-editor-generated-shortcode-box">
-			[palavra-cruzada id="<?php echo $_GET['post'] ?>"]
-		</div>
+		<input class="crossword-editor-generated-shortcode-box clipboarder"
+			value="<?php echo esc_attr("[palavra-cruzada id=\"{$_GET['post']}\"]") ?>" />
 	</div>
 </div>
