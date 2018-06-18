@@ -40,10 +40,7 @@
 			this.initializeFields();
 		},
 		initializeFields: function() {
-			var crossword_letters = this.data.crosword_letters,
-				crossword_size = this.data.crossword_size,
-				crossword = crossword_table.regenerate(crossword_letters, crossword_size);
-			this.elements.$crossword_editor.html(crossword);
+			this.repaintCrossword();
 		},
 		initializeEvents: function() {
 			var self = this;
@@ -64,13 +61,21 @@
 				var $this = $(event.currentTarget),
 					operator = $this.data('operator'),
 					type = $this.data('type'),
-					pos = $this.data('pos'),
-					updated_crossword = 'row' === type ?
-						self.updateRow(operator, pos) :
-						self.updateCol(operator, pos);
-				self.elements.$crossword_editor.html(updated_crossword);
-				self.updateInputHidden();
+					pos = $this.data('pos');
+				if ('row' === type) {
+					self.updateRow(operator, pos);
+					return;
+				}
+				self.updateCol(operator, pos);
 			});
+		},
+		repaintCrossword: function() {
+			var crossword = crossword_table.regenerate(
+				this.data.crosword_letters,
+				this.data.crossword_size
+			);
+			this.elements.$crossword_editor.html(crossword);
+			this.updateInputHidden();
 		},
 		updateLetters: function(letter, pos_x, pos_y) {
 			this.data.crosword_letters[pos_y][pos_x] = letter;
@@ -94,18 +99,14 @@
 					);
 					this.data.crossword_size.y--;
 				}
+			} else {
+
 			}
-			return crossword_table.regenerate(
-				this.data.crosword_letters,
-				this.data.crossword_size
-			);
+			this.repaintCrossword();
 		},
 		updateCol: function(operator, pos) {
 			console.log('[update-col]', operator, pos);
-			return crossword_table.regenerate(
-				this.data.crosword_letters,
-				this.data.crossword_size
-			);
+			this.repaintCrossword();
 		},
 	};
 
