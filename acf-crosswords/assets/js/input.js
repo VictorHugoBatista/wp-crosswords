@@ -97,20 +97,18 @@
 			} else { // rem
 				var position_to_remove = 'bottom' === pos ?
 					'begin' : 'end';
-				this.data.crosword_letters =
-					array_functions.remove_item(
-						this.data.crosword_letters,
-						position_to_remove
-					);
+				array_functions.remove_item(
+					this.data.crosword_letters,
+					position_to_remove
+				);
 				this.data.crossword_size.y--;
 			}
 			this.repaintCrossword();
 		},
 		updateCol: function(operator, pos) {
-			console.log('[update-col]', operator, pos);
+			var position_to_remove = 'right' === pos ? 'begin' : 'end';
 			for (var row_index in this.data.crosword_letters) {
 				var current_row = this.data.crosword_letters[row_index];
-				console.log(current_row);
 				if ('add' === operator) {
 					if ('right' === pos) {
 						current_row.push('');
@@ -118,11 +116,10 @@
 						current_row.unshift('');
 					}
 				} else { // rem
-					if ('right' === pos) {
-						//
-					} else { // left
-						//
-					}
+					array_functions.remove_item(
+						current_row,
+						position_to_remove
+					);
 				}
 			}
 			if ('add' === operator) {
