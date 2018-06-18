@@ -79,10 +79,10 @@
 
 .crossword-editor-generated-shortcode-inner {
 	display: inline-block;
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: 500;
 	margin-bottom: 10px;
-	text-align: left;
+	text-align: center;
 }
 
 .crossword-editor-generated-shortcode-box {
@@ -91,7 +91,14 @@
 	border-radius: 4px;
 	cursor: pointer;
 	margin-top: 5px;
-	padding: 5px 10px;
+	padding: 6px 0;
+	text-align: center;
 	-webkit-transition: 230ms ease-in-out;
 	transition: 230ms ease-in-out;
+}
+
+.crossword-editor-generated-shortcode-box:hover {
+	background-color: #444444;
+	border-color: #f2f2f2;
+	color: #f2f2f2;
 }
