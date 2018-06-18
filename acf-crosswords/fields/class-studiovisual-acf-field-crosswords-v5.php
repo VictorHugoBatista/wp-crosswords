@@ -139,10 +139,10 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		?>
 		<input type="hidden" class="crossword-editor-hidden" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" />
 		<div class="crossword-editor-layout-line-control">
-			<button class="crossword-editor-button button button-primary" data-operator="add" data-type="row" data-pos="up" title="Adicionar linha">
+			<button class="crossword-editor-button button button-primary" data-operator="add" data-type="row" data-pos="top" title="Adicionar linha">
 				<span class="dashicons dashicons-plus"></span>
 			</button>
-			<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="row" data-pos="up" title="Remover linha">
+			<button class="crossword-editor-button button button-primary" data-operator="rem" data-type="row" data-pos="top" title="Remover linha">
 				<span class="dashicons dashicons-minus"></span>
 			</button>
 		</div>
