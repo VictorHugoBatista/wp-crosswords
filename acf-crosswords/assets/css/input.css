@@ -79,7 +79,7 @@
 
 .crossword-editor-generated-shortcode-inner {
 	display: inline-block;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 500;
 	margin-bottom: 10px;
 	text-align: center;
@@ -94,6 +94,7 @@
 	border: 2px dotted #444444;
 	border-radius: 4px;
 	cursor: pointer;
+	font-size: 15px;
 	margin-top: 5px;
 	padding: 6px 0;
 	text-align: center;
