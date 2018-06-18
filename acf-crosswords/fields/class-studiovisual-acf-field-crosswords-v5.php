@@ -136,6 +136,7 @@ class studiovisual_acf_field_crosswords extends acf_field {
 		*  Create a simple text input using the 'font_size' setting.
 		*/
 		
+		include 'partials/acf-crossword-geneated-shortcode.php';
 		include 'partials/acf-crossword-field.php';
 	}
 	
