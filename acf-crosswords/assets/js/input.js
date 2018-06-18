@@ -61,7 +61,7 @@
 			}
 			this.initializeFields();
 		},
-		
+
 		initializeFields: function() {
 			this.repaintCrossword();
 		},
@@ -204,8 +204,8 @@
 	var crossword_table = {
 		/**
 		 * Gera o html da tabela do gerador de palavras cruzadas.
-		 * @param {array} Array bidimensional com os dados à serem exibidos.
-		 * @param {object} Objeto com o tamanho do editor em x e y.
+		 * @param {array} letters Array bidimensional com os dados à serem exibidos.
+		 * @param {object} size Objeto com o tamanho do editor em x e y.
 		 * @returns {string} Texto com a tabela gerada.
 		 */
 		regenerate: function(letters, size) {
@@ -234,8 +234,8 @@
 	var array_functions = {
 		/**
 		 * Remove o primeiro ou o último item de um array.
-		 * @param {array} Array com o item à ser removido.
-		 * @param {string} Posição do item. begin | end
+		 * @param {array} array Array com o item à ser removido.
+		 * @param {string} position Posição do item. begin | end
 		 * @returns {array} Array com o item removido.
 		 */
 		remove_item: function(array, position) {
