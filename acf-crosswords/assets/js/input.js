@@ -109,10 +109,7 @@
 			);
 			this.elements.$crossword_editor.html(crossword);
 			this.updateInputHidden();
-
-			var new_height = this.elements.$crossword_editor.css('height');
-			this.elements.$crossword_editor_layout_row_control
-				.css('height', new_height);
+			this.centerLateralControls();
 		},
 
 		/**
@@ -195,6 +192,16 @@
 				this.data.crossword_size.x--;
 			}
 			this.repaintCrossword();
+		},
+
+		/**
+		 * Centraliza os controles laterais
+		 * com base na tabela do editor.
+		 */
+		centerLateralControls: function() {
+			var new_height = this.elements.$crossword_editor.css('height');
+			this.elements.$crossword_editor_layout_row_control
+				.css('height', new_height);
 		},
 	};
 
