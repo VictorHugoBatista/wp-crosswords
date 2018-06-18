@@ -95,12 +95,12 @@
 				}
 				this.data.crossword_size.y++;
 			} else { // rem
-				if ('bottom' === pos) {
-					this.data.crosword_letters.splice(
-						this.data.crosword_letters.length - 1
-					);
-				} else { // top
-					this.data.crosword_letters.splice(0, 1);
+				var position_to_remove = 'bottom' === pos ?
+					this.data.crosword_letters.length - 1 : 0;
+				this.data.crosword_letters.splice(
+					position_to_remove, 1
+				);
+				if ('top' === pos) {
 					this.data.crosword_letters =
 						this.data.crosword_letters.filter(function(val){return val});
 				}
