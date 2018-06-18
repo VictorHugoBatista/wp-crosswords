@@ -18,7 +18,7 @@
 	</table>
 	<div class="text-center">
 		<button class="crossword-puzzle-button">
-			Resolver
+			Verificar solução
 		</button>
 	</div>
 </form>
