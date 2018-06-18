@@ -85,6 +85,10 @@
 	text-align: center;
 }
 
+.crossword-editor-generated-shortcode-inner .highlighted {
+	color: #ff1a1a;
+}
+
 .crossword-editor-generated-shortcode-box {
 	background-color: #f2f2f2;
 	border: 2px dotted #444444;
