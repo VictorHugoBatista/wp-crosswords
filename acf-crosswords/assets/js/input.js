@@ -158,7 +158,16 @@
 		},
 	};
 
+	/**
+	 * Responsável por funções complexas envolvendo arrays.
+	 */
 	var array_functions = {
+		/**
+		 * Remove o primeiro ou o último item de um array.
+		 * @param {array} Array com o item à ser removido.
+		 * @param {string} Posição do item. begin | end
+		 * @returns {array} Array com o item removido.
+		 */
 		remove_item: function(array, position) {
 			var index_to_remove = 'begin' === position ?
 				0 : array.length - 1;
