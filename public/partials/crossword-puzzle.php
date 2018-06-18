@@ -1,4 +1,5 @@
 <form class="crossword-puzzle-form" action="">
+	<input type="hidden" name="id" value="<?php echo $data['id'] ?>" />
 	<table class="crossword-puzzle">
 		<?php foreach ($crossword as $key_row => $row) : ?>
 		<tr>
