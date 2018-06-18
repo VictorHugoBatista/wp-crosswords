@@ -113,7 +113,16 @@
 }
 
 .clipboarder-tooltip {
+	background-color: rgba(0, 0, 0, .8);
+	border-radius: 2px;
+	color: #fff;
 	display: none;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	padding: 5px;
+	position: absolute;
+	top: 10px;
 }
 
 .clipboarder-tooltip.show {

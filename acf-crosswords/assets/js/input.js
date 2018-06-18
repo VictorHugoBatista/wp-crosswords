@@ -299,7 +299,7 @@
 				$tooltip.addClass('show');
 				setTimeout(function() {
 					$tooltip.removeClass('show');
-				}, 1000);
+				}, 800);
 			});
 		},
 	};
