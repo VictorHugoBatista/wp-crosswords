@@ -86,31 +86,27 @@
 				.val(JSON.stringify(this.data.crosword_letters));
 		},
 		updateRow: function(operator, pos) {
-			console.log('[update-row]', operator, pos);
-			if ('bottom' === pos) {
-				if ('add' === operator) {
+			if ('add' === operator) {
+				if ('bottom' === pos) {
 					this.data.crosword_letters.push(
 						Array(this.data.crossword_size.x).fill('')
 					);
-				} else { // rem
-					this.data.crosword_letters.splice(
-						this.data.crosword_letters.length - 1
-					);
-				}
-			} else {
-				if ('add' === operator) {
+				} else { // top
 					this.data.crosword_letters.unshift(
 						Array(this.data.crossword_size.x).fill('')
 					);
-				} else { // rem
+				}
+				this.data.crossword_size.y++;
+			} else { // rem
+				if ('bottom' === pos) {
+					this.data.crosword_letters.splice(
+						this.data.crosword_letters.length - 1
+					);
+				} else { // top
 					this.data.crosword_letters.splice(0, 1);
 					this.data.crosword_letters =
 						this.data.crosword_letters.filter(function(val){return val});
 				}
-			}
-			if ('add' === operator) {
-				this.data.crossword_size.y++;
-			} else { // rem
 				this.data.crossword_size.y--;
 			}
 			this.repaintCrossword();
