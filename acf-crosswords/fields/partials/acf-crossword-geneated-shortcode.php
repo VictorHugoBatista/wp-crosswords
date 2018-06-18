@@ -6,5 +6,6 @@
 		</div>
 		<input class="crossword-editor-generated-shortcode-box clipboarder" readonly
 			value="<?php echo esc_attr("[palavra-cruzada id=\"{$_GET['post']}\"]") ?>" />
+		<div class="clipboarder-tooltip">Copiado!</div>
 	</div>
 </div>

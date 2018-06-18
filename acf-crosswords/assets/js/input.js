@@ -292,11 +292,14 @@
 		},
 		initializeEvents: function() {
 			this.elements.$clipboarder.on('click', function(event) {
-				var element = event.currentTarget;
-				console.log(element);
+				var element = event.currentTarget,
+					$tooltip = $(element).siblings('.clipboarder-tooltip');
 				element.select();
 				document.execCommand('copy');
-				console.log(element.value());
+				$tooltip.addClass('show');
+				setTimeout(function() {
+					$tooltip.removeClass('show');
+				}, 1000);
 			});
 		},
 	};
