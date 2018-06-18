@@ -102,17 +102,16 @@ class Wp_Crosswords_Public {
 
 	public function create_shortcode_palavra_cruzada() {
 		add_shortcode('palavra_cruzada', function($atts) {
-		    $data = shortcode_atts( array(
+		    $data = shortcode_atts([
 		        'id' => '',
-		    ), $atts );
+		    ], $atts);
 		    if ('' === $data['id']) {
 		    	return;
 		    }
 		    $crossword = $this->get_crossword($data['id']);
-		    echo '<pre>';
-		    var_dump($crossword);
-		    echo '</pre>';
-		    return "--- id=\"{$data['id']}\" ---";
+		    ob_start();
+		    include 'partials/crossword-puzzle.php';
+		    return ob_get_clean();
 		});
 	}
 
