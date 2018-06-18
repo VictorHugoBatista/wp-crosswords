@@ -95,6 +95,9 @@
 				}
 				this.data.crossword_size.y++;
 			} else { // rem
+				if (1 >= this.data.crossword_size.y) {
+					return;
+				}
 				var position_to_remove = 'top' === pos ?
 					'begin' : 'end';
 				array_functions.remove_item(
@@ -116,6 +119,9 @@
 						current_row.unshift('');
 					}
 				} else { // rem
+					if (1 >= this.data.crossword_size.x) {
+						return;
+					}
 					array_functions.remove_item(
 						current_row,
 						position_to_remove
