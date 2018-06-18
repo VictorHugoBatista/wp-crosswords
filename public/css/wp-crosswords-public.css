@@ -37,5 +37,14 @@
 	cursor: pointer;
 	color: #fff;
 	font-size: 16px;
+	-webkit-transition: 230ms ease-in-out;
+	transition: 230ms ease-in-out;
 	padding: 5px 18px;
+}
+
+.crossword-puzzle-button:hover {
+	background-color: #22aa9f;
+	-webkit-box-shadow: 0px 0px 18px -1px rgba(34,170,159,1);
+	-moz-box-shadow: 0px 0px 18px -1px rgba(34,170,159,1);
+	box-shadow: 0px 0px 18px -1px rgba(34,170,159,1);
 }
