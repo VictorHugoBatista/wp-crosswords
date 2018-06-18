@@ -92,25 +92,26 @@
 					this.data.crosword_letters.push(
 						Array(this.data.crossword_size.x).fill('')
 					);
-					this.data.crossword_size.y++;
 				} else { // rem
 					this.data.crosword_letters.splice(
 						this.data.crosword_letters.length - 1
 					);
-					this.data.crossword_size.y--;
 				}
 			} else {
 				if ('add' === operator) {
 					this.data.crosword_letters.unshift(
 						Array(this.data.crossword_size.x).fill('')
 					);
-					this.data.crossword_size.y++;
 				} else { // rem
 					this.data.crosword_letters.splice(0, 1);
 					this.data.crosword_letters =
 						this.data.crosword_letters.filter(function(val){return val});
-					this.data.crossword_size.y--;
 				}
+			}
+			if ('add' === operator) {
+				this.data.crossword_size.y++;
+			} else { // rem
+				this.data.crossword_size.y--;
 			}
 			this.repaintCrossword();
 		},
