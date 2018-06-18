@@ -35,6 +35,7 @@
 				$crossword_editor: $crossword_editor,
 				$crossword_editor_button: $('.crossword-editor-button'),
 				$crossword_editor_hidden: $('.crossword-editor-hidden'),
+				$crossword_editor_layout_row_control: $('.crossword-editor-layout-row-control'),
 			};
 			return true;
 		},
@@ -108,6 +109,10 @@
 			);
 			this.elements.$crossword_editor.html(crossword);
 			this.updateInputHidden();
+
+			var new_height = this.elements.$crossword_editor.css('height');
+			this.elements.$crossword_editor_layout_row_control
+				.css('height', new_height);
 		},
 
 		/**
