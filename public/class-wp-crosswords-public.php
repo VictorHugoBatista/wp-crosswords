@@ -105,7 +105,23 @@ class Wp_Crosswords_Public {
 		    $data = shortcode_atts( array(
 		        'id' => '',
 		    ), $atts );
+		    if ('' === $data['id']) {
+		    	return;
+		    }
+		    $crossword = $this->get_crossword($data['id']);
+		    echo '<pre>';
+		    var_dump($crossword);
+		    echo '</pre>';
 		    return "--- id=\"{$data['id']}\" ---";
 		});
+	}
+
+	private function get_crossword($post_id) {
+		$crossword = function_exists('get_field') ?
+			get_field('palavra-cruzada', $post_id) : '';
+		if (! $crossword || '' === $crossword) {
+			return [];
+		}
+		return json_decode($crossword);
 	}
 }
