@@ -59,10 +59,6 @@
 					y: value.length,
 				};
 			}
-			this.initializeFields();
-		},
-
-		initializeFields: function() {
 			this.repaintCrossword();
 		},
 
