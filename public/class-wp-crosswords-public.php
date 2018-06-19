@@ -107,19 +107,11 @@ class Wp_Crosswords_Public {
 		    $data = shortcode_atts([
 		        'id' => '',
 		    ], $atts);
-		    $message = [];
+		    $message = $this->generate_solve_message();
 		    $data_cells = [];
 		    if ('' === $data['id']) {
 		    	return '<div><strong>Favor adicionar o id da palavra cruzada!</strong></div>' .
 		    		'<div>Exemplo de shortcode: <strong>[palavra-cruzada id="1234"]</strong></div>';
-		    }
-		    if (array_key_exists('eval_result', $_GET)) {
-		    	$message = [
-		    		'type' => 'true' === $_GET['eval_result'] ? 'success' : 'danger',
-		    		'text' => 'true' === $_GET['eval_result'] ?
-		    			'<strong>Parabéns!</strong> Você resolveu preencheu a palavra cruzada com sucesso.' :
-		    			'Ainda há algo de errado, por favor tente novamente!',
-		    	];
 		    }
 		    if (array_key_exists('data_cells', $_GET)) {
 		    	$data_cells = json_decode(base64_decode($_GET['data_cells']), true);
@@ -190,5 +182,18 @@ class Wp_Crosswords_Public {
 		$cookie_key = "wp-crosswords-solved-{$crossword_id}";
 		setcookie($cookie_key, $crossword_id, $time_one_year_future, '/');
 		$_COOKIE[$cookie_key] = $crossword_id;
+	}
+
+	private function generate_solve_message() {
+	    $message = [];
+	    if (array_key_exists('eval_result', $_GET)) {
+	    	$message = [
+	    		'type' => 'true' === $_GET['eval_result'] ? 'success' : 'danger',
+	    		'text' => 'true' === $_GET['eval_result'] ?
+	    			'<strong>Parabéns!</strong> Você resolveu preencheu a palavra cruzada com sucesso.' :
+	    			'Ainda há algo de errado, por favor tente novamente!',
+	    	];
+	    }
+	    return $message;
 	}
 }
