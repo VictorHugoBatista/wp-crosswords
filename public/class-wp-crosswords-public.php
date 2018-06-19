@@ -131,7 +131,7 @@ class Wp_Crosswords_Public {
 		    if (! array_key_exists("wp-crosswords-solved-{$data['id']}", $_COOKIE)) {
 		    	include 'partials/crossword-puzzle.php';
 		    } else {
-		    	echo 'resolvido!';
+		    	include 'partials/crossword-solved.php';
 		    }
 		    return ob_get_clean();
 		});
