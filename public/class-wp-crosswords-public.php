@@ -135,8 +135,11 @@ class Wp_Crosswords_Public {
 	        function(array $matches) {
 	        	$result = $this->eval_crossword($_POST['id'], $_POST['crossword-puzzle-cell']);
 	        	$result_text = var_export($result, true);
+	        	$url_to_return = $_SERVER['HTTP_REFERER'];
+	        	$url_to_return = explode('?', $url_to_return);
+	        	$url_to_return = $url_to_return[0];
 	        	header_remove('Location');
-	        	header("Location: {$_SERVER['HTTP_REFERER']}?eval_result={$result_text}");
+	        	header("Location: {$url_to_return}?eval_result={$result_text}");
 	        	die();
 	        },
 	        ['method' => 'POST']
