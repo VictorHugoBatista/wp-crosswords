@@ -2,3 +2,58 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+.crossword-puzzle {
+	margin-bottom: 20px;
+}
+
+.crossword-puzzle-form {
+	display: inline-block;
+}
+
+.crossword-puzzle td {
+	height: 35px;
+	padding: 0;
+	width: 35px;
+}
+
+.crossword-puzzle td.bordered {
+	border: 2px solid #000;
+}
+
+.crossword-puzzle .crossword-puzzle-cell {
+	background-color: #fff;
+	border: none;
+	border-radius: none;
+	height: 100%;
+	text-align: center;
+	width: 100%;
+}
+
+.crossword-puzzle-button {
+	background-color: #11998e;
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	color: #fff;
+	font-size: 17px;
+	-webkit-transition: 230ms ease-in-out;
+	transition: 230ms ease-in-out;
+	padding: 5px 18px;
+}
+
+.crossword-puzzle-button:hover {
+	background-color: #22aa9f;
+	-webkit-box-shadow: 0px 0px 18px -1px rgba(34,170,159,1);
+	-moz-box-shadow: 0px 0px 18px -1px rgba(34,170,159,1);
+	box-shadow: 0px 0px 18px -1px rgba(34,170,159,1);
+}
+
+.crossword-solved {
+	border-radius: 4px;
+	-webkit-box-shadow: 0px 1px 65px -1px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 1px 65px -1px rgba(0,0,0,0.2);
+	box-shadow: 0px 1px 65px -1px rgba(0,0,0,0.2);
+	margin: 20px 0;
+	padding: 30px;
+}
