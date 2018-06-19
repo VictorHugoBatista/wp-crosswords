@@ -1,4 +1,6 @@
 <?php
+use Brain\Cortex\Route\RouteCollectionInterface;
+use Brain\Cortex\Route\QueryRoute;
 
 /**
  * The public-facing functionality of the plugin.
@@ -113,6 +115,16 @@ class Wp_Crosswords_Public {
 		    include 'partials/crossword-puzzle.php';
 		    return ob_get_clean();
 		});
+	}
+
+	public function cortex_routes(RouteCollectionInterface $routes) {
+	    $routes->addRoute(new QueryRoute(
+	        'wp-crosswords/eval',
+	        function(array $matches) {
+	        	var_dump('teste');
+	        	die();
+	        }
+	    ));
 	}
 
 	private function get_crossword($post_id) {
