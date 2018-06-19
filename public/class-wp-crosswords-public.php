@@ -121,10 +121,26 @@ class Wp_Crosswords_Public {
 	    $routes->addRoute(new QueryRoute(
 	        'wp-crosswords/eval',
 	        function(array $matches) {
-	        	var_dump('teste');
+	        	$result = $this->eval_crossword($_POST['id'], $_POST['crossword-puzzle-cell']);
+	        	header_remove('Location');
+	        	header("Location: {$_SERVER['HTTP_REFERER']}");
 	        	die();
 	        }
 	    ));
+	}
+
+	private function eval_crossword($id, $data_to_eval) {
+		$crossword = $this->get_crossword($id);
+		foreach ($data_to_eval as $y => $row) {
+			foreach ($row as $x => $cell) {
+				if (! array_key_exists($y, $crossword) ||
+					! array_key_exists($x, $crossword[$y]) ||
+					$cell !== $crossword[$y][$x]) {
+					return false;
+				}
+			}
+		}
+    	return true;
 	}
 
 	private function get_crossword($post_id) {
