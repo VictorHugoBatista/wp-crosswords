@@ -125,7 +125,8 @@ class Wp_Crosswords_Public {
 	        	header_remove('Location');
 	        	header("Location: {$_SERVER['HTTP_REFERER']}");
 	        	die();
-	        }
+	        },
+	        ['method' => 'POST']
 	    ));
 	}
 
