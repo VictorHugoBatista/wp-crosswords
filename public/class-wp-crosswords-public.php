@@ -142,6 +142,16 @@ class Wp_Crosswords_Public {
 	    $routes->addRoute(new QueryRoute(
 	        'wp-crosswords/eval',
 	        function(array $matches) {
+	        	if (! array_key_exists('id', $_POST) || '' === $_POST['id'] ||
+	        		! array_key_exists('crossword-puzzle-cell', $_POST) ||
+	        		'' === $_POST['crossword-puzzle-cell']) {
+	        		header('HTTP/1.1 400 Parâmetros não recebidos corretamente!');
+	        		echo '<h1>Parâmetros não recebidos corretamente!</h1>';
+	        		echo '<pre>';
+	        		var_dump($_POST);
+	        		echo '</pre>';
+	        		die();
+	        	}
 	        	$result = $this->eval_crossword($_POST['id'], $_POST['crossword-puzzle-cell']);
 	        	$result_text = var_export($result, true);
 	        	$url_to_return = $_SERVER['HTTP_REFERER'];
