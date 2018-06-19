@@ -108,6 +108,7 @@ class Wp_Crosswords_Public {
 		        'id' => '',
 		    ], $atts);
 		    $message = [];
+		    $data_cells = [];
 		    if ('' === $data['id']) {
 		    	return;
 		    }
@@ -118,6 +119,9 @@ class Wp_Crosswords_Public {
 		    			'<strong>Parabéns!</strong> Você resolveu preencheu a palavra cruzada com sucesso.' :
 		    			'Ainda há algo de errado, por favor tente novamente!',
 		    	];
+		    }
+		    if (array_key_exists('data_cells', $_GET)) {
+		    	$data_cells = json_decode(base64_decode($_GET['data_cells']));
 		    }
 		    $crossword = $this->get_crossword($data['id']);
 		    ob_start();
@@ -138,8 +142,9 @@ class Wp_Crosswords_Public {
 	        	$url_to_return = $_SERVER['HTTP_REFERER'];
 	        	$url_to_return = explode('?', $url_to_return);
 	        	$url_to_return = $url_to_return[0];
+	        	$data_cells_text = base64_encode(json_encode($_POST['crossword-puzzle-cell']));
 	        	header_remove('Location');
-	        	header("Location: {$url_to_return}?eval_result={$result_text}");
+	        	header("Location: {$url_to_return}?eval_result={$result_text}&data_cells={$data_cells_text}");
 	        	die();
 	        },
 	        ['method' => 'POST']
