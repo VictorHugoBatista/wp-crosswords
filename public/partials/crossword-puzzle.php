@@ -1,4 +1,4 @@
-<form class="crossword-puzzle-form" action="">
+<form class="crossword-puzzle-form" method="POST" action="/wp-crosswords/eval">
 	<input type="hidden" name="id" value="<?php echo $data['id'] ?>" />
 	<table class="crossword-puzzle">
 		<?php foreach ($crossword as $key_row => $row) : ?>
