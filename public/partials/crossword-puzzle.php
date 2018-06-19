@@ -1,3 +1,9 @@
+<div>
+	<h3><?php echo get_the_title($data['id']) ?></h3>
+	<p>
+		<?php echo get_post_field('post_content', $data['id']) ?>
+	</p>
+</div>
 <div class="text-center">
 	<form class="crossword-puzzle-form" method="POST" action="/wp-crosswords/eval">
 		<input type="hidden" name="id" value="<?php echo $data['id'] ?>" />
