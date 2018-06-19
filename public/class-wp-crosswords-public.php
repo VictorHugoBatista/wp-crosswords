@@ -110,7 +110,8 @@ class Wp_Crosswords_Public {
 		    $message = [];
 		    $data_cells = [];
 		    if ('' === $data['id']) {
-		    	return;
+		    	return '<div><strong>Favor adicionar o id da palavra cruzada!</strong></div>' .
+		    		'<div>Exemplo de shortcode: <strong>[palavra-cruzada id="1234"]</strong></div>';
 		    }
 		    if (array_key_exists('eval_result', $_GET)) {
 		    	$message = [
