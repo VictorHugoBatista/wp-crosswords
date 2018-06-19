@@ -107,11 +107,23 @@ class Wp_Crosswords_Public {
 		    $data = shortcode_atts([
 		        'id' => '',
 		    ], $atts);
+		    $message = [];
 		    if ('' === $data['id']) {
 		    	return;
 		    }
+		    if (array_key_exists('eval_result', $_GET)) {
+		    	$message = [
+		    		'type' => 'true' === $_GET['eval_result'] ? 'success' : 'danger',
+		    		'text' => 'true' === $_GET['eval_result'] ?
+		    			'<strong>Parabéns!</strong> Você resolveu preencheu a palavra cruzada com sucesso.' :
+		    			'Ainda há algo de errado, por favor tente novamente!',
+		    	];
+		    }
 		    $crossword = $this->get_crossword($data['id']);
 		    ob_start();
+		    if (! empty($message)) {
+		    	include 'partials/eval_messages.php';
+		    }
 		    include 'partials/crossword-puzzle.php';
 		    return ob_get_clean();
 		});
