@@ -108,13 +108,17 @@ class Wp_Crosswords_Public {
 		        'id' => '',
 		    ], $atts);
 		    if ('' === $data['id']) {
-		    	return '<div><strong>Favor adicionar o id de uma palavra cruzada!</strong></div>' .
-		    		'<div>Exemplo de shortcode: <strong>[palavra-cruzada id="1234"]</strong></div>';
+		    	$validation_message = 'Favor adicionar o id de uma palavra cruzada!';
+		    	ob_start();
+		    	include 'partials/shortcode-validation-message.php';
+	    		return ob_get_clean();
 		    }
 		    $crossword = $this->get_crossword($data['id']);
 		    if (! is_array($crossword) || empty($crossword)) {
-				return '<div><strong>Favor adicionar um id de palavra cruzada válido!</strong></div>' .
-		    		'<div>Exemplo de shortcode: <strong>[palavra-cruzada id="1234"]</strong></div>';
+		    	$validation_message = 'Favor adicionar um id de palavra cruzada válido!';
+		    	ob_start();
+		    	include 'partials/shortcode-validation-message.php';
+	    		return ob_get_clean();
 		    }
 		    $message = $this->generate_solve_message();
 		    $data_cells = [];
