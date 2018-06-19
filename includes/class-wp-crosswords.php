@@ -157,6 +157,7 @@ class Wp_Crosswords {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'init', $plugin_admin, 'create_cpt_crossword' );
+		$this->loader->add_action( 'acf/settings/load_json', $plugin_admin, 'acf_load_json' );
 
 	}
 
