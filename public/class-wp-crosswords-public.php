@@ -121,7 +121,7 @@ class Wp_Crosswords_Public {
 		    	];
 		    }
 		    if (array_key_exists('data_cells', $_GET)) {
-		    	$data_cells = json_decode(base64_decode($_GET['data_cells']));
+		    	$data_cells = json_decode(base64_decode($_GET['data_cells']), true);
 		    }
 		    $crossword = $this->get_crossword($data['id']);
 		    ob_start();
@@ -142,9 +142,13 @@ class Wp_Crosswords_Public {
 	        	$url_to_return = $_SERVER['HTTP_REFERER'];
 	        	$url_to_return = explode('?', $url_to_return);
 	        	$url_to_return = $url_to_return[0];
-	        	$data_cells_text = base64_encode(json_encode($_POST['crossword-puzzle-cell']));
+	        	$url_to_return = "{$url_to_return}?eval_result={$result_text}";
 	        	header_remove('Location');
-	        	header("Location: {$url_to_return}?eval_result={$result_text}&data_cells={$data_cells_text}");
+	        	if (! $result) {
+		        	$data_cells_text = base64_encode(json_encode($_POST['crossword-puzzle-cell']));
+		        	$url_to_return .= "&data_cells={$data_cells_text}";
+	        	}
+	        	header("Location: {$url_to_return}");
 	        	die();
 	        },
 	        ['method' => 'POST']
