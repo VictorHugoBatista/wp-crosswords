@@ -128,7 +128,11 @@ class Wp_Crosswords_Public {
 		    if (! empty($message)) {
 		    	include 'partials/eval_messages.php';
 		    }
-		    include 'partials/crossword-puzzle.php';
+		    if (! array_key_exists("wp-crosswords-solved-{$data['id']}", $_COOKIE)) {
+		    	include 'partials/crossword-puzzle.php';
+		    } else {
+		    	echo 'resolvido!';
+		    }
 		    return ob_get_clean();
 		});
 	}
@@ -183,7 +187,7 @@ class Wp_Crosswords_Public {
 	private function create_solved_cookie($crossword_id) {
 		$time_one_year_future = time() + (365 * 24 * 60 * 60);
 		$cookie_key = "wp-crosswords-solved-{$crossword_id}";
-		setcookie($cookie_key, $crossword_id, $time_one_year_future);
+		setcookie($cookie_key, $crossword_id, $time_one_year_future, '/');
 		$_COOKIE[$cookie_key] = $crossword_id;
 	}
 }
