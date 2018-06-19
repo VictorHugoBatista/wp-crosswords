@@ -6,7 +6,7 @@
 			<?php foreach ($row as $key_cell => $cell) : ?>
 			<?php if ('' !== $cell) : ?>
 			<td class="bordered">
-				<input type="text" class="crossword-puzzle-cell" required
+				<input type="text" class="crossword-puzzle-cell" required maxlength="1"
 					name="crossword-puzzle-cell[<?php echo $key_row ?>][<?php echo $key_cell ?>]"
 					value="<?php echo array_key_exists($key_row, $data_cells) && array_key_exists($key_cell, $data_cells[$key_row]) ? $data_cells[$key_row][$key_cell] : '' ?>"
 					/>
