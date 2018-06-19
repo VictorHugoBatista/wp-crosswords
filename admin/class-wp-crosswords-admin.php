@@ -115,7 +115,7 @@ class Wp_Crosswords_Admin {
 	}
 
 	public function acf_load_json($paths) {
-		$paths[] = plugin_dir_url( __FILE__ ) . '../acf-json';
+		$paths[] = plugin_dir_path(__FILE__) . '../acf-json';
 		return $paths;
 	}
 }
