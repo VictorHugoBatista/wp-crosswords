@@ -37,6 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'PLUGIN_NAME_VERSION', '0.0.0' );
 
+require_once 'vendor/autoload.php';
 require_once 'acf-crosswords/acf-crosswords-field.php';
 
 /**
