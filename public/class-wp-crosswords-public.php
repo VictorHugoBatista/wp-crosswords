@@ -122,8 +122,9 @@ class Wp_Crosswords_Public {
 	        'wp-crosswords/eval',
 	        function(array $matches) {
 	        	$result = $this->eval_crossword($_POST['id'], $_POST['crossword-puzzle-cell']);
+	        	$result_text = var_export($result, true);
 	        	header_remove('Location');
-	        	header("Location: {$_SERVER['HTTP_REFERER']}");
+	        	header("Location: {$_SERVER['HTTP_REFERER']}?eval_result={$result_text}");
 	        	die();
 	        },
 	        ['method' => 'POST']
