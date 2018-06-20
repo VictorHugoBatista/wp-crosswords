@@ -57,3 +57,7 @@
 	margin: 20px 0;
 	padding: 30px;
 }
+
+.crossword-solved .crossword-solved-title {
+	margin-bottom: 15px;
+}
