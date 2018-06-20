@@ -170,6 +170,24 @@ class Wp_Crosswords_Public {
 	        },
 	        ['method' => 'POST']
 	    ));
+
+		$routes->addRoute(new QueryRoute(
+	        'wp-crosswords/restart',
+	        function(array $matches) {
+	        	if (! array_key_exists('id', $_POST) || '' === $_POST['id']) {
+	        		header('HTTP/1.1 400 Parâmetros não recebidos corretamente!');
+	        		echo '<h1>Parâmetros não recebidos corretamente!</h1>';
+	        		echo '<pre>';
+	        		var_dump($_POST);
+	        		echo '</pre>';
+	        		die();
+	        	}
+	        	//
+	        	header("Location: {$_SERVER['HTTP_REFERER']}");
+	        	die();
+	        },
+	        ['method' => 'POST']
+	    ));	    
 	}
 
 	private function eval_crossword($id, $data_to_eval) {
