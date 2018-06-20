@@ -170,6 +170,24 @@ class Wp_Crosswords_Public {
 	        },
 	        ['method' => 'POST']
 	    ));
+
+		$routes->addRoute(new QueryRoute(
+	        'wp-crosswords/restart',
+	        function(array $matches) {
+	        	if (! array_key_exists('id', $_POST) || '' === $_POST['id']) {
+	        		header('HTTP/1.1 400 Parâmetros não recebidos corretamente!');
+	        		echo '<h1>Parâmetros não recebidos corretamente!</h1>';
+	        		echo '<pre>';
+	        		var_dump($_POST);
+	        		echo '</pre>';
+	        		die();
+	        	}
+	        	$this->remove_solved_cookie($_POST['id']);
+	        	header("Location: {$_SERVER['HTTP_REFERER']}");
+	        	die();
+	        },
+	        ['method' => 'POST']
+	    ));	    
 	}
 
 	private function eval_crossword($id, $data_to_eval) {
@@ -200,6 +218,12 @@ class Wp_Crosswords_Public {
 		$cookie_key = "wp-crosswords-solved-{$crossword_id}";
 		setcookie($cookie_key, $crossword_id, $time_one_year_future, '/');
 		$_COOKIE[$cookie_key] = $crossword_id;
+	}
+
+	private function remove_solved_cookie($crossword_id) {
+		$cookie_key = "wp-crosswords-solved-{$crossword_id}";
+		setcookie($cookie_key, '', time() - 3600, '/');
+		unset($_COOKIE[$cookie_key]);
 	}
 
 	private function generate_solve_message() {
