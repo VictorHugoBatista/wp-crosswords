@@ -182,7 +182,7 @@ class Wp_Crosswords_Public {
 	        		echo '</pre>';
 	        		die();
 	        	}
-	        	//
+	        	$this->remove_solved_cookie($_POST['id']);
 	        	header("Location: {$_SERVER['HTTP_REFERER']}");
 	        	die();
 	        },
@@ -218,6 +218,12 @@ class Wp_Crosswords_Public {
 		$cookie_key = "wp-crosswords-solved-{$crossword_id}";
 		setcookie($cookie_key, $crossword_id, $time_one_year_future, '/');
 		$_COOKIE[$cookie_key] = $crossword_id;
+	}
+
+	private function remove_solved_cookie($crossword_id) {
+		$cookie_key = "wp-crosswords-solved-{$crossword_id}";
+		setcookie($cookie_key, '', time() - 3600, '/');
+		unset($_COOKIE[$cookie_key]);
 	}
 
 	private function generate_solve_message() {
