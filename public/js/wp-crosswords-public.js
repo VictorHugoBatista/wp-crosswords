@@ -29,4 +29,13 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	$(window).on('load', function() {
+		var $crossword_alert = $('.crossword-alert'),
+			space_up = $('#wpadminbar').length ? 50 : 20;
+		if ($crossword_alert.length) {
+			$('html').animate({
+				scrollTop: $crossword_alert.offset().top - space_up,
+			}, 400);
+		}
+	});
 })( jQuery );
