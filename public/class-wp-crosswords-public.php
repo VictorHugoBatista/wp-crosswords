@@ -122,18 +122,12 @@ class Wp_Crosswords_Public {
 		    }
 		    $message = $this->generate_solve_message();
 		    $data_cells = [];
+		    $redirect_id = array_key_exists('scroll_to_cw', $_GET) ? "{$_GET['scroll_to_cw']}" : '';
 		    if (array_key_exists('data_cells', $_GET)) {
 		    	$data_cells = json_decode(base64_decode($_GET['data_cells']), true);
 		    }
 		    ob_start();
-		    if (! empty($message)) {
-		    	include 'partials/eval_messages.php';
-		    }
-		    if (! array_key_exists("wp-crosswords-solved-{$data['id']}", $_COOKIE)) {
-		    	include 'partials/crossword-puzzle.php';
-		    } else {
-		    	include 'partials/crossword-solved.php';
-		    }
+		    include 'partials/crossword-shortcode.php';
 		    return ob_get_clean();
 		});
 	}
@@ -157,7 +151,7 @@ class Wp_Crosswords_Public {
 	        	$url_to_return = $_SERVER['HTTP_REFERER'];
 	        	$url_to_return = explode('?', $url_to_return);
 	        	$url_to_return = $url_to_return[0];
-	        	$url_to_return = "{$url_to_return}?eval_result={$result_text}";
+	        	$url_to_return = "{$url_to_return}?eval_result={$result_text}&scroll_to_cw={$_POST['id']}";
 	        	header_remove('Location');
 	        	if (! $result) {
 		        	$data_cells_text = base64_encode(json_encode($_POST['crossword-puzzle-cell']));
@@ -183,7 +177,11 @@ class Wp_Crosswords_Public {
 	        		die();
 	        	}
 	        	$this->remove_solved_cookie($_POST['id']);
-	        	header("Location: {$_SERVER['HTTP_REFERER']}");
+	        	$url_to_return = $_SERVER['HTTP_REFERER'];
+	        	$url_to_return = explode('?', $url_to_return);
+	        	$url_to_return = $url_to_return[0];
+	        	$url_to_return = "{$url_to_return}?scroll_to_cw={$_POST['id']}";
+	        	header("Location: {$url_to_return}");
 	        	die();
 	        },
 	        ['method' => 'POST']
