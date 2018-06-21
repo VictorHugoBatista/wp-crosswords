@@ -127,14 +127,7 @@ class Wp_Crosswords_Public {
 		    	$data_cells = json_decode(base64_decode($_GET['data_cells']), true);
 		    }
 		    ob_start();
-		    if (! empty($message)) {
-		    	include 'partials/eval_messages.php';
-		    }
-		    if (! array_key_exists("wp-crosswords-solved-{$data['id']}", $_COOKIE)) {
-		    	include 'partials/crossword-puzzle.php';
-		    } else {
-		    	include 'partials/crossword-solved.php';
-		    }
+		    include 'partials/crossword-shortcode.php';
 		    return ob_get_clean();
 		});
 	}
