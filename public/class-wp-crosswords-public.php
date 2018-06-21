@@ -157,7 +157,7 @@ class Wp_Crosswords_Public {
 	        	$url_to_return = $_SERVER['HTTP_REFERER'];
 	        	$url_to_return = explode('?', $url_to_return);
 	        	$url_to_return = $url_to_return[0];
-	        	$url_to_return = "{$url_to_return}?eval_result={$result_text}";
+	        	$url_to_return = "{$url_to_return}?eval_result={$result_text}&scroll_to_cw={$_POST['id']}";
 	        	header_remove('Location');
 	        	if (! $result) {
 		        	$data_cells_text = base64_encode(json_encode($_POST['crossword-puzzle-cell']));
@@ -183,7 +183,11 @@ class Wp_Crosswords_Public {
 	        		die();
 	        	}
 	        	$this->remove_solved_cookie($_POST['id']);
-	        	header("Location: {$_SERVER['HTTP_REFERER']}");
+	        	$url_to_return = $_SERVER['HTTP_REFERER'];
+	        	$url_to_return = explode('?', $url_to_return);
+	        	$url_to_return = $url_to_return[0];
+	        	$url_to_return = "{$url_to_return}?scroll_to_cw={$_POST['id']}";
+	        	header("Location: {$url_to_return}");
 	        	die();
 	        },
 	        ['method' => 'POST']
