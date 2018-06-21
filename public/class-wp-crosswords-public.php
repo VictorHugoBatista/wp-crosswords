@@ -122,6 +122,7 @@ class Wp_Crosswords_Public {
 		    }
 		    $message = $this->generate_solve_message();
 		    $data_cells = [];
+		    $redirect_id = array_key_exists('scroll_to_cw', $_GET) ? "{$_GET['scroll_to_cw']}" : '';
 		    if (array_key_exists('data_cells', $_GET)) {
 		    	$data_cells = json_decode(base64_decode($_GET['data_cells']), true);
 		    }
