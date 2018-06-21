@@ -30,12 +30,12 @@
 	 */
 
 	$(window).on('load', function() {
-		var $crossword_alert = $('.crossword-alert'),
+		var $crossword = $('[data-redirect-crossword]'),
 			space_up = $('#wpadminbar').length ? 50 : 20;
-		if ($crossword_alert.length) {
+		if ($crossword.length) {
 			$('html').animate({
-				scrollTop: $crossword_alert.offset().top - space_up,
-			}, 400);
+				scrollTop: $crossword.offset().top - space_up,
+			}, 400);			
 		}
 	});
 })( jQuery );
