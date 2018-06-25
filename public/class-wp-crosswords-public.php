@@ -230,7 +230,7 @@ class Wp_Crosswords_Public {
 	    	$message = [
 	    		'type' => 'true' === $_GET['eval_result'] ? 'success' : 'danger',
 	    		'text' => 'true' === $_GET['eval_result'] ?
-	    			'<strong>Parabéns!</strong> Você resolveu preencheu a palavra cruzada com sucesso.' :
+	    			'<strong>Parabéns!</strong> Você resolveu a palavra cruzada com sucesso.' :
 	    			'Ainda há algo de errado, por favor tente novamente!',
 	    	];
 	    }
