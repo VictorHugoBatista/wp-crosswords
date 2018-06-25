@@ -16,7 +16,7 @@
  * Plugin Name:       WP Crosswords
  * Plugin URI:         
  * Description:       Adiciona a funcionalidade de criação de jogos de palavras cruzadas interativos. Os jogos são adicionados ao site por meio de shortcodes gerados no momento da criação.
- * Version:           0.0.0
+ * Version:           1.0.0
  * Author:            StudioVisual
  * Author URI:        https://studiovisual.com.br/
  * License:           GPL-2.0+
@@ -35,7 +35,12 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PLUGIN_NAME_VERSION', '0.0.0' );
+define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+
+require_once 'vendor/autoload.php';
+require_once 'acf-crosswords/acf-crosswords-field.php';
+
+Brain\Cortex::boot();
 
 /**
  * The code that runs during plugin activation.

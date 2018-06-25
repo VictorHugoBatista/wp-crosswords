@@ -1,0 +1,135 @@
+.crossword-editor-wrapper {
+	overflow: hidden;
+	zoom: 1;
+}
+
+.crossword-editor-layout-row {
+	width: 30px;
+}
+
+.crossword-editor-layout-row-center {
+	overflow: auto;
+	text-align: center;
+	width: calc(100% - 60px);
+}
+
+.crossword-editor-layout-row,
+.crossword-editor-layout-row-center {
+	float: left;
+}
+
+.crossword-editor-layout-row-control {
+	min-height: 65px;
+	position: relative;
+}
+
+.crossword-editor-layout-row-control-inner {
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.crossword-editor-layout-line-control {
+	text-align: center;
+}
+
+.crossword-editor-button {
+	margin: 3px 0 !important;
+	padding: 4px !important;
+}
+
+.crossword-editor {
+	border-radius: 3px;
+	border-collapse: collapse;
+	display: inline-block;
+	margin: 2.5px 7.5px;
+	overflow: hidden;
+}
+
+.crossword-editor td {
+	height: 35px;
+	padding: 0;
+	width: 35px;
+}
+
+.crossword-editor .crossword-editor-cell {
+	background-color: #000;
+	border: none;
+	height: 100%;
+	text-align: center;
+	-webkit-transition: background-color 220ms ease-in-out;
+	transition: background-color 220ms ease-in-out;
+	will-change: background-color;
+	width: 100%;
+}
+
+.crossword-editor .crossword-editor-cell.filled,
+.crossword-editor .crossword-editor-cell:focus {
+	background-color: transparent;
+}
+
+.crossword-editor .crossword-editor-cell:hover {
+	background-color: #fff;
+}
+
+.crossword-editor-generated-shortcode {
+	text-align: center;
+}
+
+.crossword-editor-generated-shortcode-inner {
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 500;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.crossword-editor-generated-shortcode-inner .highlighted {
+	color: #ff1a1a;
+}
+
+.crossword-editor-generated-shortcode-box {
+	background-color: #f2f2f2;
+	border: 2px dotted #444444;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 15px;
+	margin-top: 5px;
+	padding: 6px 0;
+	text-align: center;
+	-webkit-transition: 250ms ease-in-out;
+	transition: 250ms ease-in-out;
+}
+
+.crossword-editor-generated-shortcode-box:hover {
+	background-color: #444444 !important;
+	border-color: #f2f2f2;
+	color: #f2f2f2;
+}
+
+.clipboarder {
+	position: relative;
+}
+
+.clipboarder-tooltip {
+	background-color: rgba(0, 0, 0, .8);
+	border-radius: 2px;
+	color: #fff;
+	display: block;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	padding: 5px;
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	-webkit-transition: 230ms ease-in-out;
+	transition: 230ms ease-in-out;
+}
+
+.clipboarder-tooltip.show {
+	display: block;
+	opacity: 1;
+	top: 10px;
+}

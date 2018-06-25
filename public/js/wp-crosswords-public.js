@@ -29,4 +29,14 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	$(window).on('load', function() {
+		var $crossword = $('[data-redirect-crossword]'),
+			space_up = $('#wpadminbar').length ? 50 : 20;
+		if ($crossword.length  &&
+			'' !== $crossword.data('redirect-crossword')) {
+			$('html').animate({
+				scrollTop: $crossword.offset().top - space_up,
+			}, 400);			
+		}
+	});
 })( jQuery );
