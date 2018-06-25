@@ -1,4 +1,6 @@
 <?php
+use Brain\Cortex\Route\RouteCollectionInterface;
+use Brain\Cortex\Route\QueryRoute;
 
 /**
  * The public-facing functionality of the plugin.
@@ -100,4 +102,138 @@ class Wp_Crosswords_Public {
 
 	}
 
+	public function create_shortcode_palavra_cruzada() {
+		add_shortcode('palavra_cruzada', function($atts) {
+		    $data = shortcode_atts([
+		        'id' => '',
+		    ], $atts);
+		    if ('' === $data['id']) {
+		    	$validation_message = 'Favor adicionar o id de uma palavra cruzada!';
+		    	ob_start();
+		    	include 'partials/shortcode-validation-message.php';
+	    		return ob_get_clean();
+		    }
+		    $crossword = $this->get_crossword($data['id']);
+		    if (! is_array($crossword) || empty($crossword)) {
+		    	$validation_message = 'Favor adicionar um id de palavra cruzada válido!';
+		    	ob_start();
+		    	include 'partials/shortcode-validation-message.php';
+	    		return ob_get_clean();
+		    }
+		    $message = $this->generate_solve_message();
+		    $data_cells = [];
+		    $redirect_id = array_key_exists('scroll_to_cw', $_GET) ? "{$_GET['scroll_to_cw']}" : '';
+		    if (array_key_exists('data_cells', $_GET)) {
+		    	$data_cells = json_decode(base64_decode($_GET['data_cells']), true);
+		    }
+		    ob_start();
+		    include 'partials/crossword-shortcode.php';
+		    return ob_get_clean();
+		});
+	}
+
+	public function cortex_routes(RouteCollectionInterface $routes) {
+	    $routes->addRoute(new QueryRoute(
+	        'wp-crosswords/eval',
+	        function(array $matches) {
+	        	if (! array_key_exists('id', $_POST) || '' === $_POST['id'] ||
+	        		! array_key_exists('crossword-puzzle-cell', $_POST) ||
+	        		'' === $_POST['crossword-puzzle-cell']) {
+	        		header('HTTP/1.1 400 Parâmetros não recebidos corretamente!');
+	        		echo '<h1>Parâmetros não recebidos corretamente!</h1>';
+	        		echo '<pre>';
+	        		var_dump($_POST);
+	        		echo '</pre>';
+	        		die();
+	        	}
+	        	$result = $this->eval_crossword($_POST['id'], $_POST['crossword-puzzle-cell']);
+	        	$result_text = var_export($result, true);
+	        	$url_to_return = $_SERVER['HTTP_REFERER'];
+	        	$url_to_return = explode('?', $url_to_return);
+	        	$url_to_return = $url_to_return[0];
+	        	$url_to_return = "{$url_to_return}?eval_result={$result_text}&scroll_to_cw={$_POST['id']}";
+	        	header_remove('Location');
+	        	if (! $result) {
+		        	$data_cells_text = base64_encode(json_encode($_POST['crossword-puzzle-cell']));
+		        	$url_to_return .= "&data_cells={$data_cells_text}";
+	        	} else {
+	        		$this->create_solved_cookie($_POST['id']);
+	        	}
+	        	header("Location: {$url_to_return}");
+	        	die();
+	        },
+	        ['method' => 'POST']
+	    ));
+
+		$routes->addRoute(new QueryRoute(
+	        'wp-crosswords/restart',
+	        function(array $matches) {
+	        	if (! array_key_exists('id', $_POST) || '' === $_POST['id']) {
+	        		header('HTTP/1.1 400 Parâmetros não recebidos corretamente!');
+	        		echo '<h1>Parâmetros não recebidos corretamente!</h1>';
+	        		echo '<pre>';
+	        		var_dump($_POST);
+	        		echo '</pre>';
+	        		die();
+	        	}
+	        	$this->remove_solved_cookie($_POST['id']);
+	        	$url_to_return = $_SERVER['HTTP_REFERER'];
+	        	$url_to_return = explode('?', $url_to_return);
+	        	$url_to_return = $url_to_return[0];
+	        	$url_to_return = "{$url_to_return}?scroll_to_cw={$_POST['id']}";
+	        	header("Location: {$url_to_return}");
+	        	die();
+	        },
+	        ['method' => 'POST']
+	    ));	    
+	}
+
+	private function eval_crossword($id, $data_to_eval) {
+		$crossword = $this->get_crossword($id);
+		foreach ($data_to_eval as $y => $row) {
+			foreach ($row as $x => $cell) {
+				if (! array_key_exists($y, $crossword) ||
+					! array_key_exists($x, $crossword[$y]) ||
+					$cell !== $crossword[$y][$x]) {
+					return false;
+				}
+			}
+		}
+    	return true;
+	}
+
+	private function get_crossword($post_id) {
+		$crossword = function_exists('get_field') ?
+			get_field('palavra-cruzada', $post_id) : '';
+		if (! $crossword || '' === $crossword) {
+			return [];
+		}
+		return json_decode($crossword);
+	}
+
+	private function create_solved_cookie($crossword_id) {
+		$time_one_year_future = time() + (365 * 24 * 60 * 60);
+		$cookie_key = "wp-crosswords-solved-{$crossword_id}";
+		setcookie($cookie_key, $crossword_id, $time_one_year_future, '/');
+		$_COOKIE[$cookie_key] = $crossword_id;
+	}
+
+	private function remove_solved_cookie($crossword_id) {
+		$cookie_key = "wp-crosswords-solved-{$crossword_id}";
+		setcookie($cookie_key, '', time() - 3600, '/');
+		unset($_COOKIE[$cookie_key]);
+	}
+
+	private function generate_solve_message() {
+	    $message = [];
+	    if (array_key_exists('eval_result', $_GET)) {
+	    	$message = [
+	    		'type' => 'true' === $_GET['eval_result'] ? 'success' : 'danger',
+	    		'text' => 'true' === $_GET['eval_result'] ?
+	    			'<strong>Parabéns!</strong> Você resolveu a palavra cruzada com sucesso.' :
+	    			'Ainda há algo de errado, por favor tente novamente!',
+	    	];
+	    }
+	    return $message;
+	}
 }

@@ -1,0 +1,7 @@
+{
+    "name": "studiovisual/wpcrosswords",
+    "require": {
+    	"brain/cortex": "~1.0.0"
+    },
+    "minimum-stability": "dev"
+}
